@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <title>Skyline</title>
+</head>
+<body>
+
+
+<a-scene>
+
+    <a-assets>
+
+        <a-asset-item id="hotairballoon" src="models/hotairballoon.DAE"></a-asset-item>
+        <a-image id="skybox" src="images/skybox.png"></a-image>
+
+    </a-assets>
+
+
+    <!-- Kamera und Cursor -->
+    <a-entity id="camera"
+              position ="0 0.13 0"
+              camera look-controls wasd-controls>
+        <a-cursor material="color: white"></a-cursor>
+    </a-entity>
+
+    <!-- Laden der Skybox -->
+    <a-sky id="sky" src="#skybox" position="0 -200 0"></a-sky>
+
+    <!-- Laden des Heißluftballons -->
+    <a-entity id="hotairballoon" collada-model="#hotairballoon"  position="0 0 0" scale="1 1 1">
+
+
+
+</a-scene>
+
+</body>
+</html>
