@@ -7,12 +7,13 @@
 </head>
 <body>
 
-
-<a-scene>
+<!-- stats: Anzeige der Performance -->
+<a-scene stats>
 
     <a-assets>
 
-        <a-asset-item id="hotairballoon" src="models/hotairballoon.DAE"></a-asset-item>
+        <a-asset-item id="hotairballoon" src="models/hotairballoon.dae"></a-asset-item>
+        <a-asset-item id="hotairballoon2" src="models/hotairballoon2.dae"></a-asset-item>
         <a-image id="skybox" src="images/skybox.png"></a-image>
 
     </a-assets>
@@ -20,17 +21,26 @@
 
     <!-- Kamera und Cursor -->
     <a-entity id="camera"
-              position ="0 0.13 0"
+              position ="0 0.5 0"
               camera look-controls wasd-controls>
-        <a-cursor material="color: white"></a-cursor>
+        <a-cursor material="color: black"></a-cursor>
     </a-entity>
 
     <!-- Laden der Skybox -->
     <a-sky id="sky" src="#skybox" position="0 -200 0"></a-sky>
 
-    <!-- Laden des Heißluftballons -->
-    <a-entity id="hotairballoon" collada-model="#hotairballoon"  position="0 0 0" scale="1 1 1">
+    <!-- Laden der Heißluftballons -->
+    <a-entity id="hotairballoon" collada-model="#hotairballoon"  rotation="0 90 0" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity id="hotairballoon2" collada-model="#hotairballoon2" rotation="0 90 0" position="0 0 -7" scale="0.1 0.1 0.1"></a-entity>
 
+
+    <!-- Slackline -->
+    <a-entity id="slackline" geometry="primitive: plane; height: 10; width: 10" material="side: double" position="0 0 -3.5" rotation="90 0 0" scale="0.003 0.63 1"></a-entity>
+
+    <!-- Feuer -->
+    <a-entity id="feuer" geometry="primitive: box" material="shader: flat; color: red; emissive:red; emissiveIntensity: 10" position="0 0.8 0" scale="0.015 0.015 0.015"></a-entity>
+
+    <!-- Sonne -->
 
 
 </a-scene>
