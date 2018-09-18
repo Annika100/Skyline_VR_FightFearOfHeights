@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="skript.js" type="text/javascript"></script>
     <title>Skyline</title>
 </head>
 <body>
@@ -23,7 +24,7 @@
     <a-entity id="camera"
               position ="0 0.5 0"
               camera look-controls wasd-controls>
-        <a-cursor material="color: black"></a-cursor>
+        <a-cursor material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"></a-cursor>
     </a-entity>
 
     <!-- Laden der Skybox -->
