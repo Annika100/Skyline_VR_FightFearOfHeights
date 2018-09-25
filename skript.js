@@ -56,7 +56,7 @@ AFRAME.registerComponent('audiohandler', {
 */
 
 
-*/ Sound */
+/* Sound
 
 var audi = document.getElementById('audi');
 console.log(audi);
@@ -65,3 +65,46 @@ document.getElementById('play-button').addEventListener("click", function(e){
     this.style.display = 'none';
     audi.play();
 }, false);
+*/
+
+
+var tick = 0;
+
+AFRAME.registerComponent('look-animate', {
+    schema: {
+        target: {type: 'selector'},
+        /*target2: {type: 'selector'},
+        target3: {type: 'selector'},*/
+        aevent: {default: 'animation1'}
+    },
+
+    init: function() {
+        console.log('starting component look-animate');
+
+        var data= this.data;
+        var on = 0;
+
+
+        this.el.addEventListener('mouseenter', function () { //wenn cursor auf dem Objekt
+            on = 1;
+            setInterval(function () {
+                if(on ===1 ) tick++;
+                console.log('Tick: ' + tick);
+            }, 1000); // Animation wird nach n (hier 1 Sekunde) Sekunden ausgelöst
+        });
+
+        this.el.addEventListener('mouseleave', function () { // Wenn cursor nicht mehr auf dem Objekt ist, wird tick zurückgesetzt
+            on = 0;
+            tick = 0;
+            console.log('Tick: ' + tick);
+        });
+    },
+    tick: function() {
+        var data= this.data;
+        if(tick>=2) {
+            data.target.emit(data.aevent);
+            /*data.target2.emit(data.aevent);
+            data.target3.emit(data.aevent);*/
+        }
+    }
+});
