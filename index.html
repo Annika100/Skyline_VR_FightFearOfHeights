@@ -9,8 +9,8 @@
 </head>
 <body>
 
-<!-- Sound -->
-<button id="play-button">Begin Your Experience</button>
+<!-- Sound --
+<button id="play-button">Begin Experience</button>-->
 
 
 <!-- stats: Anzeige der Performance -->
@@ -20,11 +20,13 @@
 
         <a-asset-item id="hotairballoon" src="models/hotairballoon.dae"></a-asset-item>
         <a-asset-item id="hotairballoon2" src="models/hotairballoon2.dae"></a-asset-item>
-        <a-image id="skybox" src="images/skybox.png"></a-image>
+        <a-image id="img-start" src="images/start.png"></a-image>
         <!--<a-asset-item id="wave" src="sounds/waves.mp3" response-type="arraybuffer"></a-asset-item>-->
+        <!-- audio mit button
         <audio id="audi" src="sounds/waves.mp3" crossorigin="anonymous" autoplay="false"
                loop="true"
-               style="display: none"></audio>
+               style="display: none"></audio>-->
+        <a-sky id="skybox" src="images/skybox.png"></a-sky>
 
     </a-assets>
 
@@ -45,8 +47,8 @@
     </a-entity>
 
 
-    <!-- Sound -->
-    <a-entity sound="src: #audi"></a-entity>
+    <!-- Sound --
+    <a-entity sound="src: #audi"></a-entity>-->
 
     <!-- Box mit verändernden Farben bei hover --
         <a-entity id="box" cursor-listener geometry="primitive: box" material="color: blue" position="-0.2 0 -4"></a-entity>
@@ -55,6 +57,24 @@
 
     <!-- Laden der Skybox -->
     <a-sky id="sky" src="#skybox" position="0 -200 0"></a-sky>
+
+
+    <!-- Bilder -->
+    <a-image id="start" src="#img-start" scale="0.8 0.4 0.8" position="0 0.065 -1.3"
+             look-animate="target:#img-vis; aevent:startexperience">
+        <a-animation
+                begin="startexperience"
+                id="img-vis"
+                attribute="visible"
+                to="false">
+        </a-animation>
+    </a-image>
+
+
+    <!-- Ringe auf Slackline -->
+    <a-entity geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double" position="0 0 -1.33" rotation="90 0 0" scale="0.5 0.5 1"></a-entity>
+
+
 
     <!-- Laden der Heißluftballons -->
     <a-entity id="hotairballoon" collada-model="#hotairballoon"  rotation="0 90 0" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
