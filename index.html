@@ -37,13 +37,60 @@
               position ="0 0.5 0"
               camera look-controls wasd-controls>
         <!-- Cursor: fuse-based (triggert Click wenn Nutzer auf ein Entity schaut, wartet 500 Millisekunden; Zoom bei Interaktion mit Objekt-->
-        <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1" material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03">
+        <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1"
+                  material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03">
             <a-animation begin="click" easing="ease-in" attribute="scale" dur="150"
                          fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
             <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500"
                          fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+
+
         </a-entity>
         <!--<a-cursor material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"></a-cursor>-->
+
+        <!-- Animation der Kamera -->
+        <a-animation
+                begin="ring1"
+                id="camera-move1"
+                attribute="position"
+                to="0 0.5 -1.2"
+                dur="8000">
+        </a-animation>
+        <a-animation
+                begin="ring2"
+                id="camera-move2"
+                attribute="position"
+                to="0 0.5 -2.26"
+                dur="8000">
+        </a-animation>
+        <a-animation
+                begin="ring3"
+                id="camera-move3"
+                attribute="position"
+                to="0 0.5 -3.32"
+                dur="8000">
+        </a-animation>
+        <a-animation
+                begin="ring4"
+                id="camera-move4"
+                attribute="position"
+                to="0 0.5 -4.38"
+                dur="8000">
+        </a-animation>
+        <a-animation
+                begin="ring5"
+                id="camera-move5"
+                attribute="position"
+                to="0 0.5 -5.44"
+                dur="8000">
+        </a-animation>
+        <a-animation
+                begin="balloon"
+                id="camera-move6"
+                attribute="position"
+                to="0 0.5 -6.953"
+                dur="8000">
+        </a-animation>
     </a-entity>
 
 
@@ -60,20 +107,149 @@
 
 
     <!-- Bilder -->
+
+    <!-- Start Bild -->
     <a-image id="start" src="#img-start" scale="0.8 0.4 0.8" position="0 0.065 -1.3"
-             look-animate="target:#img-vis; aevent:startexperience">
+             event-animate="target:#img-vis0; target2:#ring1-vis1; aevent:startexperience">
+        <!-- Animation: bei Klick auf Bild: Bild verschwindet und Ring1 erscheint-->
         <a-animation
                 begin="startexperience"
-                id="img-vis"
-                attribute="visible"
-                to="false">
+                id="img-vis0"
+                attribute="scale"
+                to="0 0 0"
+                dur="1000"
+                repeat="0">
         </a-animation>
     </a-image>
 
+    <!-- Start Bild Übergangsweise!!!-->
+    <a-image id="start2" src="#img-start" scale="0 0 0" position="0 0.065 -6.59"
+             event-animate="target:#img2-vis0; target2:#camera-move6; aevent:balloon">
+        <!-- Animation: bei Klick auf Bild: Bild verschwindet und Kamerafahrt in den zweiten Ballon -->
+        <a-animation
+                begin="ring5"
+                id="img2-vis1"
+                attribute="scale"
+                to="0.8 0.4 0.8"
+                dur="1000"
+                delay="4000"
+                repeat="0">
+        </a-animation>
+        <a-animation
+                begin="balloon"
+                id="img2-vis0"
+                attribute="scale"
+                to="0 0 0"
+                dur="4000"
+                repeat="0">
+        </a-animation>
+    </a-image>
 
     <!-- Ringe auf Slackline -->
-    <a-entity geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double" position="0 0 -1.33" rotation="90 0 0" scale="0.5 0.5 1"></a-entity>
 
+    <!-- Ring 1 -->
+    <a-entity id="ring01" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double" position="0 0 -1.2" rotation="90 0 0" scale="0 0 0"
+              event-animate="target:#ring1-vis0; target2:#ring2-vis1; target3:#camera-move1; aevent:ring1">
+        <!-- Animation: Ring 1 wird sichtbar; bei Klick auf Ring 1: Ring verschwindet und Kamerafahrt auf diesen -->
+        <a-animation
+                begin="startexperience"
+                id="ring1-vis1"
+                attribute="scale"
+                to="0.3 0.3 1"
+                dur="1400">
+        </a-animation>
+        <a-animation
+                begin="ring1"
+                id="ring1-vis0"
+                attribute="scale"
+                to="0 0 0"
+                dur="7000">
+        </a-animation>
+    </a-entity>
+
+    <!-- Ring 2 -->
+    <a-entity id="ring02" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double" position="0 0 -2.26" rotation="90 0 0" scale="0 0 0"
+              event-animate="target:#ring2-vis0; target2:#ring3-vis1; target3:#camera-move2; aevent:ring2">
+        <!-- Animation: Ring 2 wird sichtbar; bei Klick auf Ring 2: Ring verschwindet und Kamerafahrt auf diesen-->
+        <a-animation
+                begin="ring1"
+                id="ring2-vis1"
+                attribute="scale"
+                to="0.3 0.3 1"
+                dur="1400"
+                delay="6000">
+        </a-animation>
+        <a-animation
+                begin="ring2"
+                id="ring2-vis0"
+                attribute="scale"
+                to="0 0 0"
+                dur="7000">
+        </a-animation>
+    </a-entity>
+
+    <!-- Ring 3 -->
+    <a-entity id="ring03" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double" position="0 0 -3.32" rotation="90 0 0" scale="0 0 0"
+              event-animate="target:#ring3-vis0; target2:#ring4-vis1 ; target3:#camera-move3; aevent:ring3">
+        <!-- Animation: Ring 3 wird sichtbar; bei Klick auf Ring 3: Ring verschwindet und Kamerafahrt auf diesen-->
+        <a-animation
+                begin="ring2"
+                id="ring3-vis1"
+                attribute="scale"
+                to="0.3 0.3 1"
+                dur="1400"
+                delay="6000">
+        </a-animation>
+        <a-animation
+                begin="ring3"
+                id="ring3-vis0"
+                attribute="scale"
+                to="0 0 0"
+                dur="7000">
+        </a-animation>
+    </a-entity>
+
+    <!-- Ring 4 -->
+    <a-entity id="ring04" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double" position="0 0 -4.38" rotation="90 0 0" scale="0 0 0"
+              event-animate="target:#ring4-vis0; target2:#ring5-vis1; target3:#camera-move4; aevent:ring4">
+        <!-- Animation: Ring 3 wird sichtbar; bei Klick auf Ring 3: Ring verschwindet und Kamerafahrt auf diesen-->
+        <a-animation
+                begin="ring3"
+                id="ring4-vis1"
+                attribute="scale"
+                to="0.3 0.3 1"
+                dur="1400"
+                delay="6000">
+        </a-animation>
+        <a-animation
+                begin="ring4"
+                id="ring4-vis0"
+                attribute="scale"
+                to="0 0 0"
+                dur="7000">
+        </a-animation>
+    </a-entity>
+
+    <!-- Ring 5 -->
+    <a-entity id="ring05" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double" position="0 0 -5.44" rotation="90 0 0" scale="0 0 0"
+              event-animate="target:#ring5-vis0; target2:#camera-move5; target3:#img2-vis1; aevent:ring5">
+        <!-- Animation: Ring 3 wird sichtbar; bei Klick auf Ring 3: Ring verschwindet und Kamerafahrt auf diesen-->
+        <a-animation
+                begin="ring4"
+                id="ring5-vis1"
+                attribute="scale"
+                to="0.3 0.3 1"
+                dur="1400"
+                delay="6000">
+        </a-animation>
+        <a-animation
+                begin="ring5"
+                id="ring5-vis0"
+                attribute="scale"
+                to="0 0 0"
+                dur="7000">
+        </a-animation>
+    </a-entity>
 
 
     <!-- Laden der Heißluftballons -->
