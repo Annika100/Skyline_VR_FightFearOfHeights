@@ -34,12 +34,14 @@
 
 
 
-    <!-- Kamera und Cursor  camera="userHeight: 1.6"-->
+    <!-- Kamera und Cursor  camera="userHeight: 1.6"
+
+    universal-controls="movementControls: checkpoint"
+              checkpoint-controls="mode: animate"-->
     <a-entity position="0 1.6 0">
     <a-entity id="camera"
               wasd-controls camera look-controls
-              universal-controls="movementControls: checkpoint"
-              checkpoint-controls="mode: animate">
+              >
         <!-- Cursor: fuse-based (triggert Click wenn Nutzer auf ein Entity schaut, wartet 500 Millisekunden; Zoom bei Interaktion mit Objekt-->
         <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1"
                   material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03">
