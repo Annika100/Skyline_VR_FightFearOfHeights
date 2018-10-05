@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <!-- Issue: "Camera is super sensitive to motion on Chrome Beta 66 on Android" fixed in Version 8.2 -->
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="skript.js" type="text/javascript"></script>
     <link href="style.css" rel="stylesheet">
@@ -9,8 +10,8 @@
 </head>
 <body>
 
-<!-- Sound --
-<button id="play-button">Begin Experience</button>-->
+<!-- Sound -->
+<button id="play-button">Begin Experience</button>
 
 
 <!-- stats: Anzeige der Performance -->
@@ -148,7 +149,7 @@
     <!-- Ringe auf Slackline -->
 
     <!-- Ring 1 -->
-    <a-entity id="ring01" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double" position="0 0 -1.2" rotation="90 0 0" scale="0 0 0"
+    <a-entity id="ring01" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double; opacity: 0.4" position="0 0 -1.2" rotation="90 0 0" scale="0 0 0"
               event-animate="target:#ring1-vis0; target2:#ring2-vis1; target3:#camera-move1; aevent:ring1">
         <!-- Animation: Ring 1 wird sichtbar; bei Klick auf Ring 1: Ring verschwindet und Kamerafahrt auf diesen -->
         <a-animation
@@ -168,7 +169,7 @@
     </a-entity>
 
     <!-- Ring 2 -->
-    <a-entity id="ring02" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double" position="0 0 -2.26" rotation="90 0 0" scale="0 0 0"
+    <a-entity id="ring02" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double; opacity: 0.4" position="0 0 -2.26" rotation="90 0 0" scale="0 0 0"
               event-animate="target:#ring2-vis0; target2:#ring3-vis1; target3:#camera-move2; aevent:ring2">
         <!-- Animation: Ring 2 wird sichtbar; bei Klick auf Ring 2: Ring verschwindet und Kamerafahrt auf diesen-->
         <a-animation
@@ -189,7 +190,7 @@
     </a-entity>
 
     <!-- Ring 3 -->
-    <a-entity id="ring03" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double" position="0 0 -3.32" rotation="90 0 0" scale="0 0 0"
+    <a-entity id="ring03" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double; opacity: 0.4" position="0 0 -3.32" rotation="90 0 0" scale="0 0 0"
               event-animate="target:#ring3-vis0; target2:#ring4-vis1 ; target3:#camera-move3; aevent:ring3">
         <!-- Animation: Ring 3 wird sichtbar; bei Klick auf Ring 3: Ring verschwindet und Kamerafahrt auf diesen-->
         <a-animation
@@ -210,7 +211,7 @@
     </a-entity>
 
     <!-- Ring 4 -->
-    <a-entity id="ring04" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double" position="0 0 -4.38" rotation="90 0 0" scale="0 0 0"
+    <a-entity id="ring04" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double; opacity: 0.4" position="0 0 -4.38" rotation="90 0 0" scale="0 0 0"
               event-animate="target:#ring4-vis0; target2:#ring5-vis1; target3:#camera-move4; aevent:ring4">
         <!-- Animation: Ring 3 wird sichtbar; bei Klick auf Ring 3: Ring verschwindet und Kamerafahrt auf diesen-->
         <a-animation
@@ -231,7 +232,7 @@
     </a-entity>
 
     <!-- Ring 5 -->
-    <a-entity id="ring05" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double" position="0 0 -5.44" rotation="90 0 0" scale="0 0 0"
+    <a-entity id="ring05" geometry="primitive:ring;radiusInner:0.4;radiusOuter:0.6" material="side:double; opacity: 0.4" position="0 0 -5.44" rotation="90 0 0" scale="0 0 0"
               event-animate="target:#ring5-vis0; target2:#camera-move5; target3:#img2-vis1; aevent:ring5">
         <!-- Animation: Ring 3 wird sichtbar; bei Klick auf Ring 3: Ring verschwindet und Kamerafahrt auf diesen-->
         <a-animation
