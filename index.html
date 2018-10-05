@@ -34,9 +34,9 @@
 
 
 
-    <!-- Kamera und Cursor -->
+    <!-- Kamera und Cursor  camera="userHeight: 1.6"-->
+    <a-entity id="cameraRig" position="0 1.6 0">
     <a-entity id="camera"
-              camera="userHeight: 1.6"
               wasd-controls look-controls
               universal-controls="movementControls: checkpoint"
               checkpoint-controls="mode: animate">
@@ -94,7 +94,7 @@
                 dur="8000">
         </a-animation>-->
     </a-entity>
-
+</a-entity>
 
     <!-- Sound --
     <a-entity sound="src: #audi"></a-entity>-->
@@ -260,8 +260,8 @@
 -->
 
     <!-- Laden der Heißluftballons -->
-    <a-entity id="hotairballoon" collada-model="#hotairballoon"  rotation="0 90 0" position="0 -0.5 0" scale="0.1 0.1 0.1"></a-entity>
-    <a-entity id="hotairballoon2" collada-model="#hotairballoon2" rotation="0 90 0" position="0 -0.5 -7" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity id="hotairballoon" collada-model="#hotairballoon"  rotation="0 90 0" position="0 1 0" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity id="hotairballoon2" collada-model="#hotairballoon2" rotation="0 90 0" position="0 1 -7" scale="0.1 0.1 0.1"></a-entity>
 
 
     <!-- Slackline -->
