@@ -1,7 +1,7 @@
 #play-button {
     position: fixed;
     top: calc(50% - 50px);
-    left: calc(50% - 40px);
+    left: calc(25% - 10px);
     width: 100px;
     height: 60px;
     z-index: 10;
