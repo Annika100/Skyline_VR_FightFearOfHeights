@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- Issue: "Camera is super sensitive to motion on Chrome Beta 66 on Android" fixed in Version 8.2 -->
-    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
     <script src="skript.js" type="text/javascript"></script>
     <!--<script src="//cdn.rawgit.com/donmccurdy/aframe-extras/dist/aframe-extras.min.js"></script>-->
     <link href="style.css" rel="stylesheet">
@@ -41,8 +41,7 @@
     <a-entity position="0 1.6 0">
     <a-entity id="camera"
               wasd-controls look-controls
-              universal-controls="movementControls: checkpoint"
-              checkpoint-controls="mode: animate">
+              >
         <!-- Cursor: fuse-based (triggert Click wenn Nutzer auf ein Entity schaut, wartet 500 Millisekunden; Zoom bei Interaktion mit Objekt-->
         <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1"
                   material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03">
