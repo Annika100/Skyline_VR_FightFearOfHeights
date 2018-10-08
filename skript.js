@@ -92,12 +92,16 @@ AFRAME.registerComponent('event-animate', { // A-Frame Component zur Animation a
 
 /* Geschwindigkeit des Verschwindens anpassen!!!
 *
-* Component cursor-listener lässt Elemente verschwinden*/
+* Component cursor-listener lässt Elemente verschwinden
+* To remove an entity from the DOM and thus from the scene, we call .removeChild(element) from the parent element. If we have an entity, we have to ask its parent (parentNode) to remove the entity.
+*
+* STATT removeChild "el.setAttribute('visible', false);" ODER "entityEl.object3D.visible = false;" ODER "el.parentNode.removeChild(el);"???*/
+
 AFRAME.registerComponent('visible-changer', {
     init: function () {
         var el = this.el;
         el.addEventListener('click', function (evt) {
-            el.setAttribute('visible', false);
+            el.setAttribute('scale', {x: 0, y: 0, z: 0});
         });
     }
 });
