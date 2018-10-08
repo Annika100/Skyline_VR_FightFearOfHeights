@@ -92,6 +92,33 @@ AFRAME.registerComponent('event-animate', { // A-Frame Component zur Animation a
 
 
 
+/* Geschwindigkeit des Verschwindens anpassen!!!
+*
+* Component cursor-listener lässt Elemente verschwinden*/
+AFRAME.registerComponent('cursor-listener', {
+    init: function () {
+        var el = this.el;
+        el.addEventListener('click', function (evt) {
+            el.setAttribute('visible', false);
+        });
+    }
+});
+
+
+
+/* necessary to refresh the ray caster after a model loads
+ * Quelle: https://gamedevacademy.org/beginners-guide-to-a-frame-vr/ */
+AFRAME.registerComponent('raycaster-autorefresh', {
+    init: function () {
+        var el = this.el;
+        this.el.addEventListener('model-loaded', function () {
+            var cursorEl = el.querySelector('[raycaster]');
+            cursorEl.components.raycaster.refreshObjects();
+        });
+    }
+});
+
+
 /*
  var tick = 0;
 
