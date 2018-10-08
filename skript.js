@@ -93,7 +93,7 @@ AFRAME.registerComponent('event-animate', { // A-Frame Component zur Animation a
 /* Geschwindigkeit des Verschwindens anpassen!!!
 *
 * Component cursor-listener lässt Elemente verschwinden*/
-AFRAME.registerComponent('cursor-listener', {
+AFRAME.registerComponent('visible-changer', {
     init: function () {
         var el = this.el;
         el.addEventListener('click', function (evt) {
