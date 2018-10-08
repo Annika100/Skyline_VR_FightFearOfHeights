@@ -73,7 +73,6 @@ AFRAME.registerComponent('event-animate', { // A-Frame Component zur Animation a
     schema: {
         target: {type: 'selector'}, //mehrere Targets um mehrere Animationen mit einem 'click' auszulösen
         target2: {type: 'selector'},
-        target3: {type: 'selector'},
         aevent: {default: 'animation1'}, // verlinkung als 'begin' in einer Animation
         triggeraction: {default: 'click' }
     },
@@ -85,7 +84,6 @@ AFRAME.registerComponent('event-animate', { // A-Frame Component zur Animation a
         this.el.addEventListener(data.triggeraction, function () {
             data.target.emit(data.aevent);
             data.target2.emit(data.aevent);
-            data.target3.emit(data.aevent);
         });
     }
 });
