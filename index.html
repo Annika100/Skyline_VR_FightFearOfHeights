@@ -34,9 +34,10 @@
 
 
     <!-- Kamera und Cursor -->
+    <!-- cameraRig Entity zur Animation der Kamera Position -->
     <a-entity id="cameraRig" position ="0 0.5 0">
         <a-entity id="camera"
-                  camera look-controls wasd-controls="#cameraRig;">
+                  camera look-controls wasd-controls>
             <!-- Cursor: fuse-based (triggert Click wenn Nutzer auf ein Entity schaut, wartet 500 Millisekunden; Zoom bei Interaktion mit Objekt-->
             <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1"
                       material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03">
