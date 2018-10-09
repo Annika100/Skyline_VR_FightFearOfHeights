@@ -5,6 +5,7 @@
     <!-- Issue: "Camera is super sensitive to motion on Chrome Beta 66 on Android" fixed in Version 8.2 -->
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="skript.js" type="text/javascript"></script>
+    <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
     <link href="style.css" rel="stylesheet">
     <title>Skyline</title>
 </head>
@@ -227,6 +228,17 @@
     <a-entity id="feuer" geometry="primitive: box" material="shader: flat; color: red; emissive:red; emissiveIntensity: 10" position="0 0.8 0" scale="0.015 0.015 0.015"></a-entity>
 
     <!-- Sonne -->
+
+
+    <!-- Environment Component Forest -->
+    <a-entity environment="preset: forest" position="0 -5 0">
+        <a-animation
+            attribute="position"
+            to="0 -5 20"
+            dur="20000">
+        </a-animation>
+    </a-entity>
+
 
 
 </a-scene>
