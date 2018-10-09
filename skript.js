@@ -92,7 +92,7 @@ AFRAME.registerComponent('event-animate', { // A-Frame Component zur Animation a
 
 /* Geschwindigkeit des Verschwindens anpassen!!!
 *
-* Component cursor-listener lässt Elemente verschwinden
+* Component visible-changer lässt Elemente verschwinden und zählt dabei den Score +1
 * To remove an entity from the DOM and thus from the scene, we call .removeChild(element) from the parent element. If we have an entity, we have to ask its parent (parentNode) to remove the entity.
 *
 * STATT removeChild "el.setAttribute('visible', false);" ODER "entityEl.object3D.visible = false;" ???*/
@@ -102,9 +102,9 @@ AFRAME.registerComponent('visible-changer', {
         var el = this.el;
         el.addEventListener('click', function (evt) {
             el.setAttribute('scale', {x: 0, y: 0, z: 0});
-            AFPS.gamestate.score++;
+            AFPS.scorestate.score++;
             var scoreEl = document.getElementById('scoredisplay');
-            scoreEl.setAttribute('value', 'Score: ' + AFPS.gamestate.score);
+            scoreEl.setAttribute('value', 'Score: ' + AFPS.scorestate.score);
                 /* ODER BESSER: el.parentNode.removeChild(el);*/
                 /*var score = score + 1;
                 $("#score").setAttribute('text','value','Score '+score); */
@@ -112,9 +112,8 @@ AFRAME.registerComponent('visible-changer', {
     }
 });
 
-
 window.AFPS = {
-    gamestate: {
+    scorestate: {
         score: 0
     }
 };
