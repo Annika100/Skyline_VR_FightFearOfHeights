@@ -95,16 +95,29 @@ AFRAME.registerComponent('event-animate', { // A-Frame Component zur Animation a
 * Component cursor-listener lässt Elemente verschwinden
 * To remove an entity from the DOM and thus from the scene, we call .removeChild(element) from the parent element. If we have an entity, we have to ask its parent (parentNode) to remove the entity.
 *
-* STATT removeChild "el.setAttribute('visible', false);" ODER "entityEl.object3D.visible = false;" ODER "el.parentNode.removeChild(el);"???*/
+* STATT removeChild "el.setAttribute('visible', false);" ODER "entityEl.object3D.visible = false;" ???*/
 
 AFRAME.registerComponent('visible-changer', {
     init: function () {
         var el = this.el;
         el.addEventListener('click', function (evt) {
             el.setAttribute('scale', {x: 0, y: 0, z: 0});
+            AFPS.gamestate.score++;
+            var scoreEl = document.getElementById('scoredisplay');
+            scoreEl.setAttribute('value', 'Score: ' + AFPS.gamestate.score);
+                /* ODER BESSER: el.parentNode.removeChild(el);*/
+                /*var score = score + 1;
+                $("#score").setAttribute('text','value','Score '+score); */
         });
     }
 });
+
+
+window.AFPS = {
+    gamestate: {
+        score: 0
+    }
+};
 
 
 
@@ -119,6 +132,10 @@ AFRAME.registerComponent('raycaster-autorefresh', {
         });
     }
 });
+
+
+
+
 
 
 /*
