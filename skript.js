@@ -101,11 +101,11 @@ AFRAME.registerComponent('visible-changer', {
     init: function () {
         var el = this.el;
         el.addEventListener('click', function (evt) {
-            el.setAttribute('scale', {x: 0, y: 0, z: 0});
+            el.parentNode.removeChild(el);
             AFPS.scorestate.score++;
             var scoreEl = document.getElementById('scoredisplay');
             scoreEl.setAttribute('value', 'Score: ' + AFPS.scorestate.score);
-                /* ODER BESSER: el.parentNode.removeChild(el);*/
+                /* ODER : el.setAttribute('scale', {x: 0, y: 0, z: 0});*/
                 /*var score = score + 1;
                 $("#score").setAttribute('text','value','Score '+score); */
         });
