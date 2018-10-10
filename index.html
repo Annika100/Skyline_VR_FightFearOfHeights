@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- Issue: "Camera is super sensitive to motion on Chrome Beta 66 on Android" fixed in Version 8.2 -->
-    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="skript.js" type="text/javascript"></script>
     <!--<script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>-->
     <link href="style.css" rel="stylesheet">
@@ -22,6 +22,7 @@
 
         <a-asset-item id="hotairballoon" src="models/hotairballoon.dae"></a-asset-item>
         <a-asset-item id="hotairballoon2" src="models/hotairballoon2.dae"></a-asset-item>
+        <a-asset-item id="cliff" src="models/cliff.dae"></a-asset-item>
         <a-image id="img-start" src="images/start.jpg"></a-image>
         <a-image id="img-youdidit" src="images/youdidit.jpg"></a-image>
         <!--<a-image id="img-cancel" src="images/cancel.jpg"></a-image>-->
@@ -228,6 +229,9 @@
     <!-- Laden der Heißluftballons -->
     <a-entity id="hotairballoon" collada-model="#hotairballoon"  rotation="0 90 0" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
     <a-entity id="hotairballoon2" collada-model="#hotairballoon2" rotation="0 90 0" position="0 0 -7" scale="0.1 0.1 0.1"></a-entity>
+
+    <!-- Klippe -->
+    <a-entity id="cliff" collada-model="#cliff" rotation="0 270 0" position="0 -1.7 -23.2" scale="1 1 1"></a-entity>
 
 
     <!-- Slackline -->
