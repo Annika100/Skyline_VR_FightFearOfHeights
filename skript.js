@@ -90,6 +90,34 @@ AFRAME.registerComponent('event-animate', { // A-Frame Component zur Animation a
 
 
 
+/* Position Animation Component Heißluftballon Flug
+AFRAME.registerComponent('balloon-flight', {
+    init: function () {
+        var el = this.el;
+        el.addEventListener('click', function (evt) {
+            var posEl = document.getElementById('cliff');
+            posEl.setAttribute('position', {x: 0, y: -2.58, z: -2.31});
+        });
+    }
+});
+*/
+
+
+/* Component visible-changer entfernt Child Elemente */
+AFRAME.registerComponent('visible-changer', {
+    init: function () {
+        var el = this.el;
+        el.addEventListener('click', function (evt) {
+            el.parentNode.removeChild(el);
+        });
+    }
+});
+
+
+
+
+
+
 /* Geschwindigkeit des Verschwindens anpassen!!!
 *
 * Component visible-changer lässt Elemente verschwinden und zählt dabei den Score +1
@@ -97,7 +125,7 @@ AFRAME.registerComponent('event-animate', { // A-Frame Component zur Animation a
 *
 * STATT removeChild "el.setAttribute('visible', false);" ODER "entityEl.object3D.visible = false;" ???*/
 
-AFRAME.registerComponent('visible-changer', {
+AFRAME.registerComponent('score-counter', {
     init: function () {
         var el = this.el;
         el.addEventListener('click', function (evt) {
