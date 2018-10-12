@@ -127,7 +127,7 @@
     <!-- Start Bild -->
     <a-image id="start" src="#img-start" scale="0.6 0.3 0.6" position="0 0.15 -1.3"
              visible-changer
-             event-animate="target:#ring1-vis1; aevent:startexperience">
+             event-animate="target:#ring1-vis1; target2:#balloon-flight; aevent:startexperience">
              <!--sound="src: url(sounds/waves.mp3); on: click"-->
         <!-- Animation: bei Klick auf Bild: Bild verschwindet und Ring1 erscheint-->
     </a-image>
@@ -152,7 +152,7 @@
 
     <!-- Ring 1 -->
     <a-entity id="ring01" geometry="primitive:circle; radius: 0.65" material="side:double; opacity: 0.4" position="0 0.01 -1.2" rotation="90 0 0" scale="0 0 0"
-              visible-changer
+              score-counter
               event-animate="target:#ring2-vis1; target2:#camera-move1; aevent:ring1">
         <!-- Animation: Ring 1 wird sichtbar; bei Klick auf Ring 1: Ring verschwindet und Kamerafahrt auf diesen -->
         <a-animation
@@ -167,7 +167,7 @@
 
     <!-- Ring 2 -->
     <a-entity id="ring02" geometry="primitive:circle; radius: 0.65" material="side:double; opacity: 0.4" position="0 0.01 -2.26" rotation="90 0 0" scale="0 0 0"
-              visible-changer
+              score-counter
               event-animate="target:#ring3-vis1; target2:#camera-move2; aevent:ring2">
         <!-- Animation: Ring 2 wird sichtbar; bei Klick auf Ring 2: Ring verschwindet und Kamerafahrt auf diesen-->
         <a-animation
@@ -182,7 +182,7 @@
 
     <!-- Ring 3 -->
     <a-entity id="ring03" geometry="primitive:circle; radius: 0.65" material="side:double; opacity: 0.4" position="0 0.01 -3.32" rotation="90 0 0" scale="0 0 0"
-              visible-changer
+              score-counter
               event-animate="target:#ring4-vis1 ; target2:#camera-move3; aevent:ring3">
         <!-- Animation: Ring 3 wird sichtbar; bei Klick auf Ring 3: Ring verschwindet und Kamerafahrt auf diesen-->
         <a-animation
@@ -197,7 +197,7 @@
 
     <!-- Ring 4 -->
     <a-entity id="ring04" geometry="primitive:circle; radius: 0.65" material="side:double; opacity: 0.4" position="0 0.01 -4.38" rotation="90 0 0" scale="0 0 0"
-              visible-changer
+              score-counter
               event-animate="target:#ring5-vis1; target2:#camera-move4; aevent:ring4">
         <!-- Animation: Ring 3 wird sichtbar; bei Klick auf Ring 3: Ring verschwindet und Kamerafahrt auf diesen-->
         <a-animation
@@ -212,7 +212,7 @@
 
     <!-- Ring 5 -->
     <a-entity id="ring05" geometry="primitive:circle; radius: 0.65" material="side:double; opacity: 0.4" position="0 0.01 -5.44" rotation="90 0 0" scale="0 0 0"
-              visible-changer
+              score-counter
               event-animate="target:#camera-move5; target2:#img2-vis1; aevent:ring5">
         <!-- Animation: Ring 3 wird sichtbar; bei Klick auf Ring 3: Ring verschwindet und Kamerafahrt auf diesen-->
         <a-animation
@@ -231,7 +231,15 @@
     <a-entity id="hotairballoon2" collada-model="#hotairballoon2" shadow="cast: true" rotation="0 90 0" position="0 0 -7" scale="0.1 0.1 0.1"></a-entity>
 
     <!-- Klippe -->
-    <a-entity id="cliff" collada-model="#cliff" shadow="receive: true" rotation="0 270 0" position="0 -2.58 -23.2" scale="1 1 1"></a-entity>
+    <a-entity id="cliff" collada-model="#cliff" shadow="receive: true" rotation="0 270 0" position="0 -2.58 -23.2" scale="1 1 1">
+        <a-animation
+                begin="startexperience"
+                id="balloon-flight"
+                attribute="position"
+                to="0 -2.58 -2.3"
+                dur="100000">
+        </a-animation>
+    </a-entity>
 
 
     <!-- Slackline -->
@@ -245,13 +253,14 @@
 
     <!-- Licht -->
     <!--<a-entity light="color:#EEE;intensity:0.5" position="-1 14.768748658218229 -0.40030401759598533"></a-entity>-->
-    <!--<a-entity light="type:spot;angle:45;groundColor:#ffffff;color:#d56817;intensity:0.5"></a-entity>-->
+    <!--<a-entity light="type:spot;angle:45;groundColor:#ffffff;color:#d56817;intensity:0.5"></a-entity>
+
+
     <a-entity light="type: directional; color:#EEE;intensity:1.5; castShadow: true" position="0.436 11.893 13.66" rotation=""></a-entity>
     <a-entity light="type: directional; color:#d56817" position="0.436 11.893 13.66" rotation=""></a-entity>
 
     <a-entity light="type: directional; color:#EEE" position="0.436 0.08250364725638981 -42.664441256706574" rotation=""></a-entity>
-    <a-entity light="type: directional; color:#d56817; castShadow: true" position="0.436 11.893 13.66" rotation=""></a-entity>
-
+    <a-entity light="type: directional; color:#d56817; castShadow: true" position="0.436 11.893 13.66" rotation=""></a-entity>-->
 
 
 
