@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- Issue: "Camera is super sensitive to motion on Chrome Beta 66 on Android" fixed in Version 8.2 -->
-    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="skript.js" type="text/javascript"></script>
     <!--<script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>-->
     <link href="style.css" rel="stylesheet">
@@ -231,12 +231,12 @@
     <a-entity id="hotairballoon2" collada-model="#hotairballoon2" shadow="cast: true" rotation="0 90 0" position="0 0 -7" scale="0.1 0.1 0.1"></a-entity>
 
     <!-- Klippe -->
-    <a-entity id="cliff" collada-model="#cliff" shadow="receive: true" rotation="0 270 0" position="0 -2.58 -23.2" scale="1 1 1">
+    <a-entity id="cliff" collada-model="#cliff" shadow="receive: true" rotation="0 -270 0" position="0 -2.58 -6.1" scale="1 1 1">
         <a-animation
                 begin="startexperience"
                 id="balloon-flight"
                 attribute="position"
-                to="0 -2.58 -2.3"
+                to="0 -2.58 15.36"
                 dur="100000">
         </a-animation>
     </a-entity>
@@ -245,22 +245,24 @@
     <!-- Slackline -->
     <a-entity id="slackline" shadow="cast: true" geometry="primitive: plane; height: 10; width: 10" material="side: double" position="0 0 -3.5" rotation="90 0 0" scale="0.003 0.63 1"></a-entity>
 
-    <!-- Feuer -->
+    <!-- Feuer --
     <a-entity id="feuer" geometry="primitive: box" material="shader: flat; color: red; emissive:red; emissiveIntensity: 10" position="0 0.8 0" scale="0.015 0.015 0.015"></a-entity>
+    -->
+
 
     <!-- Sonne -->
 
 
     <!-- Licht -->
     <!--<a-entity light="color:#EEE;intensity:0.5" position="-1 14.768748658218229 -0.40030401759598533"></a-entity>-->
-    <!--<a-entity light="type:spot;angle:45;groundColor:#ffffff;color:#d56817;intensity:0.5"></a-entity>
+    <!--<a-entity light="type:spot;angle:45;groundColor:#ffffff;color:#d56817;intensity:0.5"></a-entity>-->
 
 
     <a-entity light="type: directional; color:#EEE;intensity:1.5; castShadow: true" position="0.436 11.893 13.66" rotation=""></a-entity>
     <a-entity light="type: directional; color:#d56817" position="0.436 11.893 13.66" rotation=""></a-entity>
 
     <a-entity light="type: directional; color:#EEE" position="0.436 0.08250364725638981 -42.664441256706574" rotation=""></a-entity>
-    <a-entity light="type: directional; color:#d56817; castShadow: true" position="0.436 11.893 13.66" rotation=""></a-entity>-->
+    <a-entity light="type: directional; color:#d56817; castShadow: true" position="0.436 11.893 13.66" rotation=""></a-entity>
 
 
 
