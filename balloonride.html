@@ -18,9 +18,8 @@
     <a-assets>
 
         <a-asset-item id="hotairballoon" src="models/hotairballoon.dae"></a-asset-item>
-        <a-asset-item id="cliff" src="models/cliff.dae"></a-asset-item>
+        <a-asset-item id="pyramid" src="models/pyramid.dae"></a-asset-item>
         <a-image id="img-start" src="images/start.jpg"></a-image>
-        <a-image id="img-fire" src="images/fire.png"></a-image>
         <a-sky id="skybox" src="images/skybox.png"></a-sky>
 
     </a-assets>
@@ -61,24 +60,18 @@
     </a-image>
 
 
-    <!-- Fire Hot Air Balloon 1 -->
-    <a-image id="fire11" src="#img-fire" scale="0.6 0.6 0.6" position="0.027 0.78 0" rotation="90 0 0"></a-image>
-    <a-image id="fire12" src="#img-fire" scale="0.6 0.6 0.6" position="0 1.059 -0.152" rotation="0 0 0"></a-image>
-    <!-- Feuer -->
-    <a-entity id="feuer" geometry="primitive: box" material="shader:flat;color:#353535" position="0 0.76 0" scale="0.05 0.05 0.05"></a-entity>
-
 
     <!-- Laden der Heißluftballons -->
-    <a-entity id="hotairballoon" collada-model="#hotairballoon"  shadow="cast: true" rotation="0 90 0" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity id="hotairballoon" collada-model="#hotairballoon"  shadow="cast: true" rotation="0 90 0" position="0 0.087 0.05" scale="0.1 0.1 0.1"></a-entity>
 
-    <!-- Klippe -->
-    <a-entity id="cliff" collada-model="#cliff" shadow="receive: true" rotation="0 -270 0" position="0 -2.758 -5.336" scale="1 1 1">
+    <!-- Pyramiden Landschaft -->
+    <a-entity id="pyramid" collada-model="#pyramid" shadow="receive: true" rotation="0 -270 0" position="-2.25 -1 -9.7" scale="2 2 2">
         <a-animation
                 begin="startexperience"
                 id="balloon-flight"
                 attribute="position"
-                to="0 -2.58 15.36"
-                dur="125000">
+                to="-2.25 -1 33"
+                dur="180000">
         </a-animation>
     </a-entity>
 
@@ -89,11 +82,13 @@
     <!--<a-entity light="type:spot;angle:45;groundColor:#ffffff;color:#d56817;intensity:0.5"></a-entity>-->
 
 
-    <a-entity light="type: directional; color:#EEE;intensity:1.5; castShadow: true" position="0.436 11.893 13.66" rotation=""></a-entity>
-    <a-entity light="type: directional; color:#d56817" position="0.436 11.893 13.66" rotation=""></a-entity>
+    <a-entity light="type: directional; color:#EEE;intensity:0.7; castShadow: true" position="-3.38 11.893 1.38" rotation=""></a-entity>
+    <a-entity light="type: directional; color:#EEE;intensity:0.3" position="2.9 11.893 1.38" rotation=""></a-entity>
+    <a-entity light="type: directional; color:#EEE;intensity:0.3" position="-0.26 11.89 -3.23" rotation=""></a-entity>
+    <!--<a-entity light="type: directional; color:#d56817" position="0.436 11.893 13.66" rotation=""></a-entity>
 
     <a-entity light="type: directional; color:#EEE" position="0.436 0.08250364725638981 -42.664441256706574" rotation=""></a-entity>
-    <a-entity light="type: directional; color:#d56817; castShadow: true" position="0.436 11.893 13.66" rotation=""></a-entity>
+    <a-entity light="type: directional; color:#d56817; castShadow: true" position="0.436 11.893 13.66" rotation=""></a-entity>-->
 
 
 </a-scene>
