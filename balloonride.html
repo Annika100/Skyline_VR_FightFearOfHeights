@@ -13,13 +13,15 @@
 
 
 <!-- stats: Anzeige der Performance; vr-mode auf false aktiviert automatisch den VR Modus-->
-<a-scene stats raycaster-autorefresh vr-mode-ui="enabled: true">
+<a-scene raycaster-autorefresh vr-mode-ui="enabled: true">
 
     <a-assets>
 
         <a-asset-item id="hotairballoon" src="models/hotairballoon.dae"></a-asset-item>
+        <a-asset-item id="hotairballoon2" src="models/hotairballoon2.dae"></a-asset-item>
         <a-asset-item id="pyramid" src="models/pyramid.dae"></a-asset-item>
         <a-image id="img-start" src="images/start.png"></a-image>
+        <a-image id="img-fire" src="images/fire.png"></a-image>
         <a-sky id="skybox" src="images/skybox.png"></a-sky>
 
     </a-assets>
@@ -56,13 +58,48 @@
     <!-- Start Bild -->
     <a-image id="start" src="#img-start" scale="0.6 0.6 0.6" position="0 1.08 -1.3"
              visible-changer
-             event-animate="target:#balloon-flight; aevent:startexperience">
+             event-animate="target:#balloon-flight; target2:#home-button; target3:#home-text; aevent:startexperience">
     </a-image>
 
+    <!-- Home Bild -->
+    <a-entity id="loadscene" link="on: click; href: index.html" position="0 0.68 -1.4" scale="0 0 0" rotation="0 180 0">
+        <a-animation
+                begin="startexperience"
+                id="home-button"
+                attribute="scale"
+                to="0.2 0.2 0.2"
+                delay="150000">
+        </a-animation>
+    </a-entity>
+    <a-entity id="hometext" position="1.07 0.67 -1.375" scale="0 0 0" text="value: Menue; color:#000000">
+        <a-animation
+                begin="startexperience"
+                id="home-text"
+                attribute="scale"
+                to="2.5 2.5 2.5"
+                delay="150000">
+        </a-animation>
+    </a-entity>
 
 
-    <!-- Laden der Heißluftballons -->
-    <a-entity id="hotairballoon" collada-model="#hotairballoon"  shadow="cast: true" rotation="0 90 0" position="0 0.087 0.05" scale="0.1 0.1 0.1"></a-entity>
+
+    <!-- Laden des 1. Heißluftballons -->
+    <a-entity id="hotairballoon" collada-model="#hotairballoon"  shadow="cast: true" rotation="0 90 0" position="0 0.087 0" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity id="ballooninner1" geometry="primitive:circle" scale="0.33 0.33 0.33" position="0 1.166 0" material="color:black" rotation="90 0 0"></a-entity>
+    <!-- Feuer Hot Air Balloon 1 -->
+    <a-image id="fire1" src="#img-fire" scale="0.5 0.5 0.5" position="0 1.155 0" rotation="90 0 0"></a-image>
+
+
+    <!-- Laden des 2. Heißluftballons -->
+    <a-entity id="hotairballoon2" collada-model="#hotairballoon2" shadow="cast: true" rotation="0 90 0" position="30.6 9.5 -57" scale="0.1 0.1 0.1">
+        <a-animation
+                id="balloon2-flight"
+                attribute="position"
+                to="-80 9.5 -43"
+                dur="150000"
+                easing="linear"></a-animation>
+    </a-entity>
+
 
     <!-- Pyramiden Landschaft -->
     <a-entity id="pyramid" collada-model="#pyramid" shadow="receive: true" rotation="0 -270 0" position="-2.25 -1 -9.7" scale="2 2 2">
@@ -71,24 +108,18 @@
                 id="balloon-flight"
                 attribute="position"
                 to="-2.25 -1 33"
-                dur="130000">
+                dur="150000"
+                easing="linear">
         </a-animation>
     </a-entity>
 
 
-
     <!-- Licht -->
-    <!--<a-entity light="color:#EEE;intensity:0.5" position="-1 14.768748658218229 -0.40030401759598533"></a-entity>-->
-    <!--<a-entity light="type:spot;angle:45;groundColor:#ffffff;color:#d56817;intensity:0.5"></a-entity>-->
-
-
     <a-entity light="type: directional; color:#EEE;intensity:0.7; castShadow: true" position="-3.38 11.893 1.38" rotation=""></a-entity>
     <a-entity light="type: directional; color:#EEE;intensity:0.3" position="2.9 11.893 1.38" rotation=""></a-entity>
     <a-entity light="type: directional; color:#EEE;intensity:0.3" position="-0.26 11.89 -3.23" rotation=""></a-entity>
-    <!--<a-entity light="type: directional; color:#d56817" position="0.436 11.893 13.66" rotation=""></a-entity>
-
-    <a-entity light="type: directional; color:#EEE" position="0.436 0.08250364725638981 -42.664441256706574" rotation=""></a-entity>
-    <a-entity light="type: directional; color:#d56817; castShadow: true" position="0.436 11.893 13.66" rotation=""></a-entity>-->
+    <a-entity light="type: point; color:#EEE;intensity:0.3" position="-1.1 12.1 -24" rotation=""></a-entity>
+    <a-entity light="type: point;color:#EEE;intensity:0.6" position="0.427 -0.847 0.117"></a-entity>
 
 
 </a-scene>
