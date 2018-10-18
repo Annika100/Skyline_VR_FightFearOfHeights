@@ -26,6 +26,7 @@
         <a-image id="img-start" src="images/start.png"></a-image>
         <a-image id="img-youdidit" src="images/youdidit.jpg"></a-image>
         <a-image id="img-fire" src="images/fire.png"></a-image>
+        <a-image id="img-water" src="images/water.jpg"></a-image>
         <!--<a-image id="img-cancel" src="images/cancel.jpg"></a-image>-->
         <!--<a-asset-item id="wave" src="sounds/waves.mp3" response-type="arraybuffer"></a-asset-item>-->
         <!-- audio mit button
@@ -136,7 +137,7 @@
     <!-- You Did It Bild-->
     <a-image id="youdidit" src="#img-youdidit" scale="0 0 0" position="0 0.15 -6.59"
              visible-changer
-             event-animate="target:#camera-move6; aevent:balloon">
+             event-animate="target:#camera-move6; target2:#home-button; target3:#home-text; aevent:balloon">
         <!-- Animation: bei Klick auf Bild: Bild verschwindet und Kamerafahrt in den zweiten Ballon -->
         <a-animation
                 begin="ring5"
@@ -149,17 +150,25 @@
         </a-animation>
     </a-image>
 
-    <!-- Fire Hot Air Balloon 1 -->
-    <a-image id="fire11" src="#img-fire" scale="0.6 0.6 0.6" position="0.027 0.78 0" rotation="90 0 0"></a-image>
-    <a-image id="fire12" src="#img-fire" scale="0.6 0.6 0.6" position="0 1.059 -0.152" rotation="0 0 0"></a-image>
-    <!-- Feuer -->
-    <a-entity id="feuer" geometry="primitive: box" material="shader:flat;color:#353535" position="0 0.76 0" scale="0.05 0.05 0.05"></a-entity>
-
-    <!-- Fire Hot Air Balloon 2 -->
-    <a-image id="fire21" src="#img-fire" scale="0.6 0.6 0.6" position="0 0.78 -6.968" rotation="90 0 0"></a-image>
-    <a-image id="fire22" src="#img-fire" scale="0.6 0.6 0.6" position="0 1.059 -6.787" rotation="0 0 0"></a-image>
-    <!-- Feuer -->
-    <a-entity id="feuer" geometry="primitive: box" material="shader:flat;color:#353535" position="0 0.76 -7" scale="0.05 0.05 0.05"></a-entity>
+    <!-- Home Bild -->
+    <a-entity id="loadscene" link="on: click; href: index.html" position="0 0.4 -8.55" scale="0 0 0" rotation="0 180 0">
+        <a-animation
+                begin="balloon"
+                id="home-button"
+                attribute="scale"
+                to="0.2 0.2 0.2"
+                delay="5000">
+        </a-animation>
+    </a-entity>
+    <a-entity id="hometext" position="1.06 0.436 -8.53" scale="0 0 0" text="value: Menue; color:#000000">
+        <a-animation
+                begin="balloon"
+                id="home-text"
+                attribute="scale"
+                to="2.5 2.5 2.5"
+                delay="5000">
+        </a-animation>
+    </a-entity>
 
 
     <!-- Ringe auf Slackline -->
@@ -240,9 +249,23 @@
     </a-entity>
 
 
-    <!-- Laden der Heißluftballons -->
+    <!-- Laden des 1. Heißluftballons -->
     <a-entity id="hotairballoon" collada-model="#hotairballoon"  shadow="cast: true" rotation="0 90 0" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity id="ballooninner1" geometry="primitive:circle" scale="0.33 0.33 0.33" position="0 1.115 0" material="color:black" rotation="90 0 0"></a-entity>
+    <!-- Feuer Hot Air Balloon 1 -->
+    <a-image id="fire1" src="#img-fire" scale="0.5 0.5 0.5" position="0 1.1 0" rotation="90 0 0"></a-image>
+
+
+    <!-- Laden des 2. Heißluftballons -->
     <a-entity id="hotairballoon2" collada-model="#hotairballoon2" shadow="cast: true" rotation="0 90 0" position="0 0 -7" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity id="ballooninner2" geometry="primitive:circle" scale="0.33 0.33 0.33" position="0 1.115 -7" material="color:black" rotation="90 0 0"></a-entity>
+    <!-- Feuer Hot Air Balloon 2 -->
+    <a-image id="fire2" src="#img-fire" scale="0.5 0.5 0.5" position="0 1.1 -7" rotation="90 0 0"></a-image>
+
+
+    <!-- Slackline -->
+    <a-entity id="slackline" shadow="cast: true" geometry="primitive: plane; height: 10; width: 10" material="side: double" position="0 0 -3.5" rotation="90 0 0" scale="0.003 0.63 1"></a-entity>
+
 
     <!-- Klippe -->
     <a-entity id="cliff" collada-model="#cliff" shadow="receive: true" rotation="0 -270 0" position="0 -2.758 -5.336" scale="1 1 1">
@@ -251,41 +274,28 @@
                 id="balloon-flight"
                 attribute="position"
                 to="0 -2.58 15.36"
-                dur="125000">
+                dur="150000"
+                easing="linear">
         </a-animation>
     </a-entity>
 
 
-    <!-- Slackline -->
-    <a-entity id="slackline" shadow="cast: true" geometry="primitive: plane; height: 10; width: 10" material="side: double" position="0 0 -3.5" rotation="90 0 0" scale="0.003 0.63 1"></a-entity>
-
+    <a-plane src="#img-water" scale="15 100 1" position="0 -3.6 0" rotation="-90 0 0" color="#5e5e5e"></a-plane>
 
     <!-- Sonne -->
 
 
     <!-- Licht -->
-    <!--<a-entity light="color:#EEE;intensity:0.5" position="-1 14.768748658218229 -0.40030401759598533"></a-entity>-->
-    <!--<a-entity light="type:spot;angle:45;groundColor:#ffffff;color:#d56817;intensity:0.5"></a-entity>-->
-
-
-    <a-entity light="type: directional; color:#EEE;intensity:1.5; castShadow: true" position="0.436 11.893 13.66" rotation=""></a-entity>
+    <!--<a-entity light="type: directional; color:#EEE;intensity:1.5; castShadow: true" position="0.436 14.125 2.199" rotation=""></a-entity>
     <a-entity light="type: directional; color:#d56817" position="0.436 11.893 13.66" rotation=""></a-entity>
+    <a-entity light="type: directional; color:#EEE" position="0.436 11.5 -33.7" rotation=""></a-entity>
+    <a-entity light="type: directional; color:#d56817" position=" 0 11.89 1.32" rotation=""></a-entity>-->
 
-    <a-entity light="type: directional; color:#EEE" position="0.436 0.08250364725638981 -42.664441256706574" rotation=""></a-entity>
-    <a-entity light="type: directional; color:#d56817; castShadow: true" position="0.436 11.893 13.66" rotation=""></a-entity>
+    <a-entity light="type: directional; color:#EEE;intensity:0.4; castShadow: true" position="0.436 14.125 0" rotation=""></a-entity>
+    <a-entity light="type: point; color:#EEE;intensity:2.0" position="0 13.5 -3.7" rotation=""></a-entity>
+    <a-entity light="type: point; color:#EEE;intensity:1.0" position="0 13.5 -29.35" rotation=""></a-entity>
+    <a-entity light="type: point; color:#EEE;intensity:0.4" position="0 1.83 3.2" rotation=""></a-entity>
 
-
-
-
-    <!-- Environment Component Forest --
-    <a-entity environment="preset: forest" position="0 -5 0">
-        <a-animation
-            attribute="position"
-            to="0 -5 20"
-            dur="20000">
-        </a-animation>
-    </a-entity>
--->
 
 
 </a-scene>
