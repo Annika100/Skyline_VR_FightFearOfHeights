@@ -24,9 +24,9 @@
         <a-asset-item id="hotairballoon2" src="models/hotairballoon2.dae"></a-asset-item>
         <a-asset-item id="cliff" src="models/cliff.dae"></a-asset-item>
         <a-image id="img-start" src="images/start.png"></a-image>
-        <a-image id="img-youdidit" src="images/youdidit.jpg"></a-image>
+        <a-image id="img-youdidit" src="images/youdidit.png"></a-image>
         <a-image id="img-fire" src="images/fire.png"></a-image>
-        <a-image id="img-water" src="images/water.jpg"></a-image>
+        <a-image id="img-water" src="images/water.png"></a-image>
         <!--<a-image id="img-cancel" src="images/cancel.jpg"></a-image>-->
         <!--<a-asset-item id="wave" src="sounds/waves.mp3" response-type="arraybuffer"></a-asset-item>-->
         <!-- audio mit button
@@ -127,7 +127,7 @@
     <!-- Bilder -->
 
     <!-- Start Bild -->
-    <a-image id="start" src="#img-start" scale="0.5 0.5 0.5" position="0 0.2 -1.3"
+    <a-image id="start" src="#img-start" scale="0.4 0.4 0.4" position="0 0.2 -1.3"
              visible-changer
              event-animate="target:#ring1-vis1; target2:#balloon-flight; aevent:startexperience">
              <!--sound="src: url(sounds/waves.mp3); on: click"-->
@@ -135,7 +135,7 @@
     </a-image>
 
     <!-- You Did It Bild-->
-    <a-image id="youdidit" src="#img-youdidit" scale="0 0 0" position="0 0.15 -6.59"
+    <a-image id="youdidit" src="#img-youdidit" scale="0 0 0" position="0 0.24 -6.59"
              visible-changer
              event-animate="target:#camera-move6; target2:#home-button; target3:#home-text; aevent:balloon">
         <!-- Animation: bei Klick auf Bild: Bild verschwindet und Kamerafahrt in den zweiten Ballon -->
@@ -143,7 +143,7 @@
                 begin="ring5"
                 id="img2-vis1"
                 attribute="scale"
-                to="0.6 0.3 0.6"
+                to="0.5 0.5 0.5"
                 dur="1000"
                 delay="4000"
                 repeat="0">
@@ -279,8 +279,8 @@
         </a-animation>
     </a-entity>
 
-
-    <a-plane src="#img-water" scale="15 100 1" position="0 -3.6 0" rotation="-90 0 0" color="#5e5e5e"></a-plane>
+    <!-- Wasser -->
+    <a-plane src="#img-water" shadow="receive: true" scale="15 100 1" position="0 -3.6 0" rotation="-90 0 0" color="#5e5e5e"></a-plane>
 
     <!-- Sonne -->
 
