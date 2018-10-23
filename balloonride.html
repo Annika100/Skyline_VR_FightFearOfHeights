@@ -13,7 +13,7 @@
 
 
 <!-- stats: Anzeige der Performance; vr-mode auf false aktiviert automatisch den VR Modus-->
-<a-scene raycaster-autorefresh vr-mode-ui="enabled: false">
+<a-scene raycaster-autorefresh vr-mode-ui="enabled: true">
 
     <a-assets>
 
@@ -22,6 +22,7 @@
         <a-asset-item id="pyramid" src="models/pyramid.dae"></a-asset-item>
         <a-image id="img-start" src="images/start.png"></a-image>
         <a-image id="img-fire" src="images/fire.png"></a-image>
+        <a-image id="img-pyramid" src="images/pyramid.jpg"></a-image>
         <a-sky id="skybox" src="images/skybox.png"></a-sky>
 
     </a-assets>
@@ -56,7 +57,7 @@
     <!-- Bilder -->
 
     <!-- Start Bild -->
-    <a-image id="start" src="#img-start" scale="0.6 0.6 0.6" position="0 1.08 -1.3"
+    <a-image id="start" src="#img-start" scale="0.5 0.5 0.5" position="0 0.9 -1.3"
              visible-changer
              event-animate="target:#balloon-flight; target2:#home-button; target3:#home-text; aevent:startexperience">
     </a-image>
@@ -102,7 +103,7 @@
 
 
     <!-- Pyramiden Landschaft -->
-    <a-entity id="pyramid" collada-model="#pyramid" shadow="receive: true" rotation="0 -270 0" position="-2.25 -1 -9.7" scale="2 2 2">
+    <a-entity id="pyramid" collada-model="#pyramid" shadow="receive: true" rotation="0 -270 0" position="-2.25 -1.5 -9.7" scale="2 2 2">
         <a-animation
                 begin="startexperience"
                 id="balloon-flight"
@@ -112,6 +113,8 @@
                 easing="linear">
         </a-animation>
     </a-entity>
+
+    <!--<a-tetrahedron src="#img-pyramid" color="#FF926B" radius="5" rotation="-35 0 45"></a-tetrahedron>-->
 
 
     <!-- Licht -->
