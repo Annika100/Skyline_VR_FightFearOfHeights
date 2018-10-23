@@ -12,13 +12,16 @@
 <body>
 
 <!-- stats: Anzeige der Performance; vr-mode auf false aktiviert automatisch den VR Modus-->
-<a-scene raycaster-autorefresh vr-mode-ui="enabled: false">
+<a-scene raycaster-autorefresh vr-mode-ui="enabled: true">
 
     <a-assets>
 
         <a-asset-item id="hotairballoon" src="models/hotairballoon.dae"></a-asset-item>
+        <a-asset-item id="hotairballoon2" src="models/hotairballoon2.dae"></a-asset-item>
+        <a-asset-item id="island" src="models/island.dae"></a-asset-item>
         <a-image id="img-fire" src="images/fire.png"></a-image>
         <a-image id="firstSceneThumbnail" src="images/firstscene.jpg"></a-image>
+        <a-image id="img-fearsign" src="images/fearofheights.png"></a-image>
         <a-sky id="skybox" src="images/skybox.png"></a-sky>
 
     </a-assets>
@@ -32,9 +35,9 @@
             <!-- Cursor: fuse-based (triggert Click wenn Nutzer auf ein Entity schaut, wartet 500 Millisekunden; Zoom bei Interaktion mit Objekt-->
             <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1"
                       material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03">
-                <a-animation begin="click" easing="ease-in" attribute="scale" dur="1500"
+                <a-animation begin="click" easing="ease-in" attribute="scale" dur="3000"
                              fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
-                <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500"
+                <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="3000"
                              fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
             </a-entity>
             <!--<a-cursor material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"></a-cursor>-->
@@ -46,13 +49,18 @@
     <a-sky id="sky" src="#skybox" position="0 -200 0"></a-sky>
 
 
+    <!-- Bilder -->
+    <a-image id="fearsign" src="#img-fearsign" scale="2 2 1" position="4.75 1.3 -1.378" rotation="0 -80 8"></a-image>
+    <a-cylinder height="3" radius="1.5" material="color:#ffffff" scale="0.05 1 0.05" position="4.87 -0.52 -1.39"></a-cylinder>
+
+
     <!-- Skyline - Face Your Fear -->
     <a-text id="header" position="-1.34 3.24 -3" scale="1.2 1.2 1.2" value="Skyline - Face Your Fear" color="darkblue"></a-text>
 
 
     <!-- Bilder mit Links zu Szenen -->
-    <a-link href="balloonride.html" title="Hot Air Balloon Ride\n-Beginner-" image="#firstSceneThumbnail" position="-1.9 0.59 -3"></a-link>
-    <a-link href="slackline.html" title="Slackline\n-Advanced-" image="#firstSceneThumbnail" position="2.05 0.6 -3"></a-link>
+    <a-link href="balloonride.html" title="Hot Air Balloon Ride\n-Beginner-" image="#firstSceneThumbnail" position="-1.5 1.2 -3"></a-link>
+    <a-link href="slackline.html" title="Slackline\n-Advanced-" image="#firstSceneThumbnail" position="1.5 1.2 -3"></a-link>
 
     <!--<a-image id="firstSceneThumbnail" src="#firstSceneThumbnail" position="0 0.15 -1.3"
              navigation-changer>
@@ -68,15 +76,24 @@
     <a-entity id="feuer" geometry="primitive: box" material="shader:flat;color:#353535" position="0 0.76 0" scale="0.05 0.05 0.05"></a-entity>
 -->
 
-    <!-- Laden des Heißluftballons -->
-    <a-entity id="hotairballoon" collada-model="#hotairballoon"  shadow="cast: true" rotation="0 110 0" position="14.76 1.96 -11" scale="0.1 0.1 0.1">
+    <!-- Laden des 1. Heißluftballons -->
+    <a-entity id="hotairballoon" collada-model="#hotairballoon" rotation="0 130 0" position="9.25 -2.41 6.36" scale="0.5 0.5 0.5">
+    </a-entity>
+
+    <!-- Laden des 2.. Heißluftballons -->
+    <a-entity id="hotairballoon2" collada-model="#hotairballoon2"  shadow="cast: true" rotation="0 110 0" position="27.5 11.5 -30" scale="0.1 0.1 0.1">
         <a-animation
                 id="balloon-flight"
                 attribute="position"
                 to="-50 7 -11"
-                dur="90000"></a-animation>
+                dur="120000"
+                easing="linear"></a-animation>
     </a-entity>
 
+
+    <!-- Insel -->
+    <a-entity id="island" collada-model="#island"  shadow="receive: true" rotation="0 0 0" position="0.5 -4.8 -1" scale="10 10 10">
+    </a-entity>
 
 
     <!-- Licht -->
@@ -91,8 +108,8 @@
     <a-entity light="type: directional; color:#d56817; castShadow: true" position="0.436 11.893 13.66" rotation=""></a-entity>
 
 
-    <!-- Environment Component Forest -->
-    <a-entity environment="preset: arches" position="0 -18 0"></a-entity>
+    <!-- Environment Component Forest --
+    <a-entity environment="preset: arches" position="0 -18 0"></a-entity>-->
 
     <!-- Environment Component Forest --
     <a-entity environment="preset: forest" position="0 -5 0">
