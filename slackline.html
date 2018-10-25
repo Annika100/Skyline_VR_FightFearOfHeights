@@ -20,14 +20,15 @@
 
     <a-assets>
 
-        <a-asset-item id="hotairballoon" src="models/hotairballoon.dae"></a-asset-item>
-        <a-asset-item id="hotairballoon2" src="models/hotairballoon2.dae"></a-asset-item>
+        <a-asset-item id="hotairballoon_1" src="models/hotairballoon.dae"></a-asset-item>
+        <a-asset-item id="hotairballoon_2" src="models/hotairballoon2.dae"></a-asset-item>
         <a-asset-item id="cliff" src="models/cliff.dae"></a-asset-item>
         <a-image id="img-start" src="images/start.png"></a-image>
         <a-image id="img-youdidit" src="images/youdidit.png"></a-image>
+        <a-image id="img-home" src="images/home.png"></a-image>
         <a-image id="img-fire" src="images/fire.png"></a-image>
         <a-image id="img-water" src="images/water.png"></a-image>
-        <!--<a-image id="img-cancel" src="images/cancel.jpg"></a-image>-->
+        <a-image id="img-cancel" src="images/cancel.jpg"></a-image>
         <!--<a-asset-item id="wave" src="sounds/waves.mp3" response-type="arraybuffer"></a-asset-item>-->
         <!-- audio mit button
         <audio id="audi" src="sounds/waves.mp3" crossorigin="anonymous" autoplay="false"
@@ -53,7 +54,7 @@
                              fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
 
                 <!-- Score -->
-                <a-text id="scoredisplay" position="0.06 0.6 0" scale="0.6 0.6 0.6" value="Score: 0" color="blue"></a-text>
+                <a-text id="scoredisplay" position="0.06 0.6 0" scale="0.6 0.6 0.6" value="Score: 0" color="darkblue" opacity="0.7"></a-text>
 
             </a-entity>
 
@@ -104,9 +105,9 @@
         </a-animation>
 
 
-        <!-- Cancel Bild --
+        <!-- Cancel Bild
         <a-image id="cancel" src="#img-cancel" scale="0.3 0.15 0.3" position="0.39 -0.68 -1">
-        </a-image> -->
+        </a-image>-->
 
     </a-entity>
 
@@ -137,7 +138,7 @@
     <!-- You Did It Bild-->
     <a-image id="youdidit" src="#img-youdidit" scale="0 0 0" position="0 0.24 -6.59"
              visible-changer
-             event-animate="target:#camera-move6; target2:#home-button; target3:#home-text; aevent:balloon">
+             event-animate="target:#camera-move6; target2:#loadscene-button; target3:#loadscene-img; aevent:balloon">
         <!-- Animation: bei Klick auf Bild: Bild verschwindet und Kamerafahrt in den zweiten Ballon -->
         <a-animation
                 begin="ring5"
@@ -150,31 +151,32 @@
         </a-animation>
     </a-image>
 
-    <!-- Home Bild -->
-    <a-entity id="loadscene" link="on: click; href: index.html" position="0 0.4 -8.55" scale="0 0 0" rotation="0 180 0">
+    <!-- Home Bild mit Szenenwechsel-->
+    <a-link id="loadscene" href="index.html" position="0 0.4 -8.55" scale="0 0 0" visible="false">
         <a-animation
                 begin="balloon"
-                id="home-button"
+                id="loadscene-button"
                 attribute="scale"
                 to="0.2 0.2 0.2"
                 delay="5000">
         </a-animation>
-    </a-entity>
-    <a-entity id="hometext" position="1.06 0.436 -8.53" scale="0 0 0" text="value: Menue; color:#000000">
+    </a-link>
+    <a-image id="home" src="#img-home" position="0 0.4 -8.6" scale="0 0 0">
         <a-animation
                 begin="balloon"
-                id="home-text"
+                id="loadscene-img"
                 attribute="scale"
-                to="2.5 2.5 2.5"
+                to="0.6 0.6 1"
                 delay="5000">
         </a-animation>
-    </a-entity>
+    </a-image>
+
 
 
     <!-- Ringe auf Slackline -->
 
     <!-- Ring 1 -->
-    <a-entity id="ring01" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.4" position="0 0.01 -1.2" rotation="90 0 0" scale="0 0 0"
+    <a-entity id="ring01" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.55" position="0 0.01 -1.2" rotation="90 0 0" scale="0 0 0"
               score-counter
               event-animate="target:#ring2-vis1; target2:#camera-move1; aevent:ring1">
         <!-- Animation: Ring 1 wird sichtbar; bei Klick auf Ring 1: Ring verschwindet und Kamerafahrt auf diesen -->
@@ -189,7 +191,7 @@
     </a-entity>
 
     <!-- Ring 2 -->
-    <a-entity id="ring02" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.4" position="0 0.01 -2.26" rotation="90 0 0" scale="0 0 0"
+    <a-entity id="ring02" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.55" position="0 0.01 -2.26" rotation="90 0 0" scale="0 0 0"
               score-counter
               event-animate="target:#ring3-vis1; target2:#camera-move2; aevent:ring2">
         <!-- Animation: Ring 2 wird sichtbar; bei Klick auf Ring 2: Ring verschwindet und Kamerafahrt auf diesen-->
@@ -204,7 +206,7 @@
     </a-entity>
 
     <!-- Ring 3 -->
-    <a-entity id="ring03" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.4" position="0 0.01 -3.32" rotation="90 0 0" scale="0 0 0"
+    <a-entity id="ring03" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.55" position="0 0.01 -3.32" rotation="90 0 0" scale="0 0 0"
               score-counter
               event-animate="target:#ring4-vis1 ; target2:#camera-move3; aevent:ring3">
         <!-- Animation: Ring 3 wird sichtbar; bei Klick auf Ring 3: Ring verschwindet und Kamerafahrt auf diesen-->
@@ -219,7 +221,7 @@
     </a-entity>
 
     <!-- Ring 4 -->
-    <a-entity id="ring04" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.4" position="0 0.01 -4.38" rotation="90 0 0" scale="0 0 0"
+    <a-entity id="ring04" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.55" position="0 0.01 -4.38" rotation="90 0 0" scale="0 0 0"
               score-counter
               event-animate="target:#ring5-vis1; target2:#camera-move4; aevent:ring4">
         <!-- Animation: Ring 3 wird sichtbar; bei Klick auf Ring 3: Ring verschwindet und Kamerafahrt auf diesen-->
@@ -234,7 +236,7 @@
     </a-entity>
 
     <!-- Ring 5 -->
-    <a-entity id="ring05" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.4" position="0 0.01 -5.44" rotation="90 0 0" scale="0 0 0"
+    <a-entity id="ring05" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.55" position="0 0.01 -5.44" rotation="90 0 0" scale="0 0 0"
               score-counter
               event-animate="target:#camera-move5; target2:#img2-vis1; aevent:ring5">
         <!-- Animation: Ring 3 wird sichtbar; bei Klick auf Ring 3: Ring verschwindet und Kamerafahrt auf diesen-->
@@ -250,14 +252,14 @@
 
 
     <!-- Laden des 1. Heißluftballons -->
-    <a-entity id="hotairballoon" collada-model="#hotairballoon"  shadow="cast: true" rotation="0 90 0" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity id="hotairballoon1" collada-model="#hotairballoon_1"  shadow="cast: true" rotation="0 90 0" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
     <a-entity id="ballooninner1" geometry="primitive:circle" scale="0.33 0.33 0.33" position="0 1.115 0" material="color:black" rotation="90 0 0"></a-entity>
     <!-- Feuer Hot Air Balloon 1 -->
     <a-image id="fire1" src="#img-fire" scale="0.5 0.5 0.5" position="0 1.1 0" rotation="90 0 0"></a-image>
 
 
     <!-- Laden des 2. Heißluftballons -->
-    <a-entity id="hotairballoon2" collada-model="#hotairballoon2" shadow="cast: true" rotation="0 90 0" position="0 0 -7" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity id="hotairballoon2" collada-model="#hotairballoon_2" shadow="cast: true" rotation="0 90 0" position="0 0 -7" scale="0.1 0.1 0.1"></a-entity>
     <a-entity id="ballooninner2" geometry="primitive:circle" scale="0.33 0.33 0.33" position="0 1.115 -7" material="color:black" rotation="90 0 0"></a-entity>
     <!-- Feuer Hot Air Balloon 2 -->
     <a-image id="fire2" src="#img-fire" scale="0.5 0.5 0.5" position="0 1.1 -7" rotation="90 0 0"></a-image>
@@ -268,7 +270,7 @@
 
 
     <!-- Klippe -->
-    <a-entity id="cliff" collada-model="#cliff" shadow="receive: true" rotation="0 -270 0" position="0 -2.758 -5.336" scale="1 1 1">
+    <a-entity id="cliffs" collada-model="#cliff" shadow="receive: true" rotation="0 -270 0" position="0 -2.758 -5.336" scale="1 1 1">
         <a-animation
                 begin="startexperience"
                 id="balloon-flight"
