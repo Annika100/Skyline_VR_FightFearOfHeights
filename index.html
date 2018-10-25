@@ -20,7 +20,8 @@
         <a-asset-item id="hotairballoon2" src="models/hotairballoon2.dae"></a-asset-item>
         <a-asset-item id="island" src="models/island.dae"></a-asset-item>
         <a-image id="img-fire" src="images/fire.png"></a-image>
-        <a-image id="firstSceneThumbnail" src="images/firstscene.jpg"></a-image>
+        <a-image id="img-thumbnail1" src="images/screenshot_pyramid.png"></a-image>
+        <a-image id="img-thumbnail2" src="images/screenshot_slackline.png"></a-image>
         <a-image id="img-fearsign" src="images/fearofheights.png"></a-image>
         <a-sky id="skybox" src="images/skybox.png"></a-sky>
 
@@ -33,11 +34,11 @@
         <a-entity id="camera"
                   camera look-controls wasd-controls>
             <!-- Cursor: fuse-based (triggert Click wenn Nutzer auf ein Entity schaut, wartet 500 Millisekunden; Zoom bei Interaktion mit Objekt-->
-            <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1"
+            <a-entity cursor="fuse: true; fuseTimeout: 2000" position="0 0 -1"
                       material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03">
-                <a-animation begin="click" easing="ease-in" attribute="scale" dur="3000"
+                <a-animation begin="click" easing="ease-in" attribute="scale" dur="2000"
                              fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
-                <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="3000"
+                <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="2000"
                              fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
             </a-entity>
             <!--<a-cursor material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"></a-cursor>-->
@@ -50,17 +51,26 @@
 
 
     <!-- Bilder -->
+
+    <!-- Fear of Heights Sign mit Cylinder -->
     <a-image id="fearsign" src="#img-fearsign" scale="2 2 1" position="4.75 1.3 -1.378" rotation="0 -80 8"></a-image>
     <a-cylinder height="3" radius="1.5" material="color:#ffffff" scale="0.05 1 0.05" position="4.87 -0.52 -1.39"></a-cylinder>
 
+    <!-- Thumbnails mit Links und Ueberschrift für Szenenwechsel -->
+    <!-- Thumbail 1 Balloonride -->
+    <a-link href="balloonride.html" title="Hot Air Balloon Ride\n-Beginner-" image="#firstSceneThumbnail" position="-1.3 1.2 -3" scale="0.8 0.8 1" visible="false"></a-link>
+    <a-image id="thumbnail1" src="#img-thumbnail1" position="-1.3 1.2 -3.15" scale="2.5 2.5 1"></a-image>
+    <a-text></a-text>
+    <!-- Thumbnail 2 Slackline -->
+    <a-link href="slackline.html" title="Slackline\n-Advanced-" image="#firstSceneThumbnail" position="1.3 1.2 -3" scale="0.8 0.8 1" visible="false"></a-link>
+    <a-image id="thumbnail2" src="#img-thumbnail2" position="1.3 1.2 -3.15" scale="1.8 1.8 1"></a-image>
+    <a-text></a-text>
 
     <!-- Skyline - Face Your Fear -->
     <a-text id="header" position="-1.34 3.24 -3" scale="1.2 1.2 1.2" value="Skyline - Face Your Fear" color="darkblue"></a-text>
 
 
-    <!-- Bilder mit Links zu Szenen -->
-    <a-link href="balloonride.html" title="Hot Air Balloon Ride\n-Beginner-" image="#firstSceneThumbnail" position="-1.3 1.2 -3" scale="0.8 0.8 1"></a-link>
-    <a-link href="slackline.html" title="Slackline\n-Advanced-" image="#firstSceneThumbnail" position="1.3 1.2 -3" scale="0.8 0.8 1"></a-link>
+
 
     <!--<a-image id="firstSceneThumbnail" src="#firstSceneThumbnail" position="0 0.15 -1.3"
              navigation-changer>
