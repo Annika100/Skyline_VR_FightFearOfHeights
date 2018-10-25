@@ -17,12 +17,12 @@
 
     <a-assets>
 
-        <a-asset-item id="hotairballoon" src="models/hotairballoon.dae"></a-asset-item>
-        <a-asset-item id="hotairballoon2" src="models/hotairballoon2.dae"></a-asset-item>
+        <a-asset-item id="hotairballoon_1" src="models/hotairballoon.dae"></a-asset-item>
+        <a-asset-item id="hotairballoon_2" src="models/hotairballoon2.dae"></a-asset-item>
         <a-asset-item id="pyramid" src="models/pyramid.dae"></a-asset-item>
         <a-image id="img-start" src="images/start.png"></a-image>
+        <a-image id="img-home" src="images/home.png"></a-image>
         <a-image id="img-fire" src="images/fire.png"></a-image>
-        <a-image id="img-pyramid" src="images/pyramid.jpg"></a-image>
         <a-sky id="skybox" src="images/skybox.png"></a-sky>
 
     </a-assets>
@@ -59,40 +59,40 @@
     <!-- Start Bild -->
     <a-image id="start" src="#img-start" scale="0.5 0.5 0.5" position="0 0.9 -1.3"
              visible-changer
-             event-animate="target:#balloon-flight; target2:#home-button; target3:#home-text; aevent:startexperience">
+             event-animate="target:#balloon-flight; target2:#loadscene-button; target3:#loadscene-img; aevent:startexperience">
     </a-image>
 
-    <!-- Home Bild -->
-    <a-entity id="loadscene" link="on: click; href: index.html" position="0 0.68 -1.4" scale="0 0 0" rotation="0 180 0">
+    <!-- Home Bild mit Szenenwechsel-->
+    <a-link id="loadscene" href="index.html" position="0 0.68 -1.4" scale="0 0 0" visible="false">
         <a-animation
                 begin="startexperience"
-                id="home-button"
+                id="loadscene-button"
                 attribute="scale"
-                to="0.2 0.2 0.2"
+                to="0.2 0.2 1"
                 delay="150000">
         </a-animation>
-    </a-entity>
-    <a-entity id="hometext" position="1.07 0.67 -1.375" scale="0 0 0" text="value: Menue; color:#000000">
+    </a-link>
+    <a-image id="home" src="#img-home" position="0 0.68 -1.43" scale="0 0 0">
         <a-animation
                 begin="startexperience"
-                id="home-text"
+                id="loadscene-img"
                 attribute="scale"
-                to="2.5 2.5 2.5"
+                to="0.6 0.6 1"
                 delay="150000">
         </a-animation>
-    </a-entity>
+    </a-image>
 
 
 
     <!-- Laden des 1. Heißluftballons -->
-    <a-entity id="hotairballoon" collada-model="#hotairballoon"  shadow="cast: true" rotation="0 90 0" position="0 0.087 0" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity id="hotairballoon1" collada-model="#hotairballoon_1"  shadow="cast: true" rotation="0 90 0" position="0 0.087 0" scale="0.1 0.1 0.1"></a-entity>
     <a-entity id="ballooninner1" geometry="primitive:circle" scale="0.33 0.33 0.33" position="0 1.166 0" material="color:black" rotation="90 0 0"></a-entity>
     <!-- Feuer Hot Air Balloon 1 -->
     <a-image id="fire1" src="#img-fire" scale="0.5 0.5 0.5" position="0 1.155 0" rotation="90 0 0"></a-image>
 
 
     <!-- Laden des 2. Heißluftballons -->
-    <a-entity id="hotairballoon2" collada-model="#hotairballoon2" shadow="cast: true" rotation="0 90 0" position="30.6 9.5 -57" scale="0.1 0.1 0.1">
+    <a-entity id="hotairballoon2" collada-model="#hotairballoon_2" shadow="cast: true" rotation="0 90 0" position="30.6 9.5 -57" scale="0.1 0.1 0.1">
         <a-animation
                 id="balloon2-flight"
                 attribute="position"
@@ -103,7 +103,7 @@
 
 
     <!-- Pyramiden Landschaft -->
-    <a-entity id="pyramid" collada-model="#pyramid" shadow="receive: true" rotation="0 -270 0" position="-2.25 -0.3 -9.7" scale="2 2 2">
+    <a-entity id="pyramide" collada-model="#pyramid" shadow="receive: true" rotation="0 -270 0" position="-2.25 -0.3 -9.7" scale="2 2 2">
         <a-animation
                 begin="startexperience"
                 id="balloon-flight"
