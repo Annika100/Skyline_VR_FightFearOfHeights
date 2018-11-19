@@ -68,6 +68,13 @@
  */
 
 
+AFRAME.registerComponent('auto-enter-vr', {
+    init: function () {
+        this.el.sceneEl.enterVR();
+    }
+});
+
+
 
 /* Sound
  Sound auf iOS zu spielen, egal in welchem Browser, benötigt eine physische Benutzer Interaktion.
