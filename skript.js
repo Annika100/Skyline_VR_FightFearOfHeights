@@ -69,6 +69,22 @@
 
 
 
+/* Sound
+ Sound auf iOS zu spielen, egal in welchem Browser, benötigt eine physische Benutzer Interaktion.
+ Lösung: Audio Sprites mit Bibliothek Howler.js erstellen: https://github.com/goldfire/howler.js
+ Note from: https://aframe.io/docs/0.8.0/components/sound.html */
+var sound = new Howl({
+    src: ['sounds/wind.mp3'],
+    autoplay: true,
+    loop: true,
+    volume: 2
+});
+
+sound.play();
+
+
+
+
 AFRAME.registerComponent('event-animate', { // A-Frame Component zur Animation auf 'click'
     schema: {
         target: {type: 'selector'}, //mehrere Targets um mehrere Animationen mit einem 'click' auszulösen
@@ -221,21 +237,6 @@ AFRAME.registerComponent('event-animate', { // A-Frame Component zur Animation a
                  });
              }
          });
-
-
-
-        /* Sound
-           Sound auf iOS zu spielen, egal in welchem Browser, benötigt eine physische Benutzer Interaktion.
-           Lösung: Audio Sprites mit Bibliothek Howler.js erstellen: https://github.com/goldfire/howler.js
-           Note from: https://aframe.io/docs/0.8.0/components/sound.html */
-        var sound = new Howl({
-            src: ['sounds/wind.mp3'],
-            autoplay: true,
-            loop: true,
-            volume: 2
-        });
-
-        sound.play();
 
 
 
