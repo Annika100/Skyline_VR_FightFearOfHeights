@@ -91,102 +91,148 @@ AFRAME.registerComponent('event-animate', { // A-Frame Component zur Animation a
 });
 
 
+/* Position Animation Component Heißluftballon Flug
+ AFRAME.registerComponent('balloon-flight', {
+     init: function () {
+         var el = this.el;
+         el.addEventListener('click', function (evt) {
+             var posEl = document.getElementById('pyramide');
+             posEl.setAttribute('position', {x: -2.25, y: -4, z: 33}, 'dur', '150000');
+         });
+     }
+ });
+
+*/
+
 
 /* Position Animation Component Heißluftballon Flug
-AFRAME.registerComponent('balloon-flight', {
-    init: function () {
-        var el = this.el;
-        el.addEventListener('click', function (evt) {
-            var posEl = document.getElementById('cliff');
-            posEl.setAttribute('position', {x: 0, y: -2.58, z: -2.31});
-        });
-    }
-});
-*/
-
-
-/* Component visible-changer entfernt Child Elemente */
-AFRAME.registerComponent('visible-changer', {
-    init: function () {
-        var el = this.el;
-        el.addEventListener('click', function (evt) {
-            el.parentNode.removeChild(el);
-        });
-    }
-});
-
-
-/* Component object-shower änder visible von Objekten zu true
-AFRAME.registerComponent('object-shower', {
-    init: function () {
-        var el = this.el;
-        el.addEventListener('click', function (evt) {
-            el.setAttribute('visible', true);
-        });
-    }
-});
-*/
-
-
-/* Component navigation-changer lädt neue Szene bzw neue HTML Datei
-AFRAME.registerComponent('navigation-changer', {
-    init: function () {
-        var el = this.el;
-        el.addEventListener('click', function (evt) {
-            document.querySelector('a-image').navigate('index.html');
-        });
-    }
-});
-*/
+ AFRAME.registerComponent('balloon-flight', {
+     init: function () {
+         var el = this.el;
+         el.addEventListener('click', function (evt) {
+             var posEl = document.getElementById('pyramid');
+             posEl.setAttribute('to', {x: -2.25, y: -4, z: 33});
+             posEl.setAttribute('dur', '150000');
+         });
+     }
+ });*/
 
 
 
-/* Geschwindigkeit des Verschwindens anpassen!!!
-*
-* Component visible-changer lässt Elemente verschwinden und zählt dabei den Score +1
-* To remove an entity from the DOM and thus from the scene, we call .removeChild(element) from the parent element. If we have an entity, we have to ask its parent (parentNode) to remove the entity.
-*
-* STATT removeChild "el.setAttribute('visible', false);" ODER "entityEl.object3D.visible = false;" ???*/
+         /* Position Animation Component Heißluftballon Flug
+          AFRAME.registerComponent('balloon-flight', {
+          init: function () {
 
-AFRAME.registerComponent('score-counter', {
-    init: function () {
-        var el = this.el;
-        el.addEventListener('click', function (evt) {
-            el.parentNode.removeChild(el);
-            AFPS.scorestate.score++;
-            var scoreEl = document.getElementById('scoredisplay');
-            scoreEl.setAttribute('value', 'Score: ' + AFPS.scorestate.score);
-                /* ODER : el.setAttribute('scale', {x: 0, y: 0, z: 0});*/
-                /*var score = score + 1;
-                $("#score").setAttribute('text','value','Score '+score); */
-        });
-    }
-});
-
-window.AFPS = {
-    scorestate: {
-        score: 0
-    }
-};
+          //var posEl = document.getElementById('pyramide');
+          //var scene = document.querySelector(('a-scene'));
+          var animationAttributes = {
+          'id': 'animation',
+          'begin': 'startexperience',
+          'attribute': 'position',
+          'from': '-2.25 -0.3 -9.7',
+          'to': '-2.25 -4 33',
+          'dur': '1500',
+          'easing': 'linear'
+          };
+          var el = this.el;
+          el.addEventListener('click', function (evt) {
+          var posEl = document.getElementById('pyramide');
+          posEl.setAttribute(animationAttributes);
+          });
+          }
+          });
+          */
 
 
-
-/* necessary to refresh the ray caster after a model loads
- * Quelle: https://gamedevacademy.org/beginners-guide-to-a-frame-vr/ */
-AFRAME.registerComponent('raycaster-autorefresh', {
-    init: function () {
-        var el = this.el;
-        this.el.addEventListener('model-loaded', function () {
-            var cursorEl = el.querySelector('[raycaster]');
-            cursorEl.components.raycaster.refreshObjects();
-        });
-    }
-});
+         /* Component visible-changer entfernt Child Elemente */
+         AFRAME.registerComponent('visible-changer', {
+             init: function () {
+                 var el = this.el;
+                 el.addEventListener('click', function (evt) {
+                     el.parentNode.removeChild(el);
+                 });
+             }
+         });
 
 
+         /* Component object-shower änder visible von Objekten zu true
+          AFRAME.registerComponent('object-shower', {
+          init: function () {
+          var el = this.el;
+          el.addEventListener('click', function (evt) {
+          el.setAttribute('visible', true);
+          });
+          }
+          });
+          */
 
+
+         /* Component navigation-changer lädt neue Szene bzw neue HTML Datei
+          AFRAME.registerComponent('navigation-changer', {
+          init: function () {
+          var el = this.el;
+          el.addEventListener('click', function (evt) {
+          document.querySelector('a-image').navigate('index.html');
+          });
+          }
+          });
+          */
+
+
+
+         /* Geschwindigkeit des Verschwindens anpassen!!!
+          *
+          * Component visible-changer lässt Elemente verschwinden und zählt dabei den Score +1
+          * To remove an entity from the DOM and thus from the scene, we call .removeChild(element) from the parent element. If we have an entity, we have to ask its parent (parentNode) to remove the entity.
+          *
+          * STATT removeChild "el.setAttribute('visible', false);" ODER "entityEl.object3D.visible = false;" ???*/
+
+         AFRAME.registerComponent('score-counter', {
+             init: function () {
+                 var el = this.el;
+                 el.addEventListener('click', function (evt) {
+                     el.parentNode.removeChild(el);
+                     AFPS.scorestate.score++;
+                     var scoreEl = document.getElementById('scoredisplay');
+                     scoreEl.setAttribute('value', 'Score: ' + AFPS.scorestate.score);
+                     /* ODER : el.setAttribute('scale', {x: 0, y: 0, z: 0});*/
+                     /*var score = score + 1;
+                      $("#score").setAttribute('text','value','Score '+score); */
+                 });
+             }
+         });
+
+         window.AFPS = {
+             scorestate: {
+                 score: 0
+             }
+         };
+
+
+
+         /* necessary to refresh the ray caster after a model loads
+          * Quelle: https://gamedevacademy.org/beginners-guide-to-a-frame-vr/ */
+         AFRAME.registerComponent('raycaster-autorefresh', {
+             init: function () {
+                 var el = this.el;
+                 this.el.addEventListener('model-loaded', function () {
+                     var cursorEl = el.querySelector('[raycaster]');
+                     cursorEl.components.raycaster.refreshObjects();
+                 });
+             }
+         });
+
+
+
+        /* Sound
+           Sound auf iOS zu spielen, egal in welchem Browser, benötigt eine physische Benutzer Interaktion.
+           Lösung: Audio Sprites mit Bibliothek Howler.js erstellen: https://github.com/goldfire/howler.js
+           Note from: https://aframe.io/docs/0.8.0/components/sound.html */
         var sound = new Howl({
-            src: ['sounds/waves.mp3']
+            src: ['sounds/wind.mp3'],
+            autoplay: true,
+            loop: true,
+            volume: 2
         });
 
         sound.play();
@@ -201,37 +247,37 @@ AFRAME.registerComponent('raycaster-autorefresh', {
  target: {type: 'selector'},
  target2: {type: 'selector'}, --> WEG
  target3: {type: 'selector'}, --> WEG
-aevent: {default: 'animation1'}
-},
+ aevent: {default: 'animation1'}
+ },
 
-init: function() {
-    console.log('starting component look-animate');
+ init: function() {
+ console.log('starting component look-animate');
 
-    var data= this.data;
-    var on = 0;
+ var data= this.data;
+ var on = 0;
 
 
-    this.el.addEventListener('mouseenter', function () { //wenn cursor auf dem Objekt
-        on = 1;
-        setInterval(function () {
-            if(on ===1 ) tick++;
-            console.log('Tick: ' + tick);
-        }, 1000); // Animation wird nach n (hier 1 Sekunde) Sekunden ausgelöst
-    });
+ this.el.addEventListener('mouseenter', function () { //wenn cursor auf dem Objekt
+ on = 1;
+ setInterval(function () {
+ if(on ===1 ) tick++;
+ console.log('Tick: ' + tick);
+ }, 1000); // Animation wird nach n (hier 1 Sekunde) Sekunden ausgelöst
+ });
 
-    this.el.addEventListener('mouseleave', function () { // Wenn cursor nicht mehr auf dem Objekt ist, wird tick zurückgesetzt
-        on = 0;
-        tick = 0;
-        console.log('Tick: ' + tick);
-    });
-},
-tick: function() {
-    var data= this.data;
-    if(tick>=2) {
-        data.target.emit(data.aevent);
-        data.target2.emit(data.aevent); --> WEG
-        data.target3.emit(data.aevent); --> WEG
-    }
-}
-});
-*/
+ this.el.addEventListener('mouseleave', function () { // Wenn cursor nicht mehr auf dem Objekt ist, wird tick zurückgesetzt
+ on = 0;
+ tick = 0;
+ console.log('Tick: ' + tick);
+ });
+ },
+ tick: function() {
+ var data= this.data;
+ if(tick>=2) {
+ data.target.emit(data.aevent);
+ data.target2.emit(data.aevent); --> WEG
+ data.target3.emit(data.aevent); --> WEG
+ }
+ }
+ });
+ */
