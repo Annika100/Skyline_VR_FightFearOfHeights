@@ -2,7 +2,6 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <!-- Issue: "Camera is super sensitive to motion on Chrome Beta 66 on Android" fixed in Version 8.2 -->
     <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
     <script src="howler.js" type="text/javascript"></script>
     <script src="skript.js" type="text/javascript"></script>
@@ -10,22 +9,19 @@
 </head>
 <body>
 
-
 <!-- stats: Anzeige der Performance; vr-mode auf false aktiviert automatisch den VR Modus-->
 <a-scene raycaster-autorefresh auto-enter-vr>
 
     <a-assets>
-
         <a-asset-item id="hotairballoon_1" src="models/hotairballoon.dae"></a-asset-item>
         <a-asset-item id="hotairballoon_2" src="models/hotairballoon2.dae"></a-asset-item>
         <a-asset-item id="pyramid" src="models/pyramid.dae"></a-asset-item>
         <a-image id="img-start" src="images/start.png"></a-image>
         <a-image id="img-home" src="images/home.png"></a-image>
         <a-image id="img-fire" src="images/fire.png"></a-image>
+        <a-image id="img-sun" src="images/sun.png"></a-image>
         <a-sky id="skybox" src="images/skybox.png"></a-sky>
-
     </a-assets>
-
 
 
     <!-- Kamera und Cursor -->
@@ -33,24 +29,28 @@
     <a-entity id="cameraRig" position ="0 0.56 -0.2">
         <a-entity id="camera"
                   camera look-controls wasd-controls>
-            <!-- Cursor: fuse-based (triggert Click wenn Nutzer auf ein Entity schaut, wartet 500 Millisekunden; Zoom bei Interaktion mit Objekt-->
+            <!-- Cursor: fuse-based (triggert Click wenn Nutzer auf ein Entity schaut, wartet 800 Millisekunden; Zoom bei Interaktion mit Objekt-->
             <a-entity cursor="fuse: true; fuseTimeout: 800" position="0 0 -1"
                       material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03">
                 <a-animation begin="click" easing="ease-in" attribute="scale" dur="800"
                              fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
                 <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="8000"
                              fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
-
             </a-entity>
-
-            <!--<a-cursor material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"></a-cursor>-->
         </a-entity>
-
     </a-entity>
 
 
     <!-- Laden der Skybox -->
-    <a-sky id="sky" src="#skybox" position="0 -200 0"></a-sky>
+    <a-sky id="sky" src="#skybox" position="0 -1000 0">
+        <a-animation
+                attribute="rotation"
+                from="0 0 0"
+                to="0 360 0"
+                dur="700000"
+                easing="linear">
+        </a-animation>
+    </a-sky>
 
 
     <!-- Bilder -->
@@ -82,7 +82,8 @@
         </a-animation>
     </a-image>
 
-
+    <!-- Sonne -->
+    <a-image id="sunshine" src="#img-sun" position="-52.486 157.879 -115.223" rotation="40 0 0" scale="50 50 1"></a-image>
 
     <!-- Laden des 1. Heißluftballons -->
     <a-entity id="hotairballoon1" collada-model="#hotairballoon_1"  shadow="cast: true" rotation="0 90 0" position="0 0.087 0" scale="0.1 0.1 0.1"></a-entity>
@@ -90,8 +91,7 @@
     <!-- Feuer Hot Air Balloon 1 -->
     <a-image id="fire1" src="#img-fire" scale="0.5 0.5 0.5" position="0 1.155 0" rotation="90 0 0"></a-image>
 
-
-    <!-- Laden des 2. Heißluftballons -->
+    <!-- Laden des 2. Heißluftballons mit Animation-->
     <a-entity id="hotairballoon2" collada-model="#hotairballoon_2" shadow="cast: true" rotation="0 90 0" position="30.6 9.5 -57" scale="0.1 0.1 0.1">
         <a-animation
                 id="balloon2-flight"
@@ -102,7 +102,7 @@
     </a-entity>
 
 
-    <!-- Pyramiden Landschaft -->
+    <!-- Pyramiden Landschaft mit Animation-->
     <a-entity id="pyramid" collada-model="#pyramid" shadow="receive: true" rotation="0 -270 0" position="-2.25 -0.3 -9.7" scale="2 2 2">
         <a-animation
                 begin="startexperience"
@@ -113,8 +113,6 @@
                 easing="linear">
         </a-animation>
     </a-entity>
-
-    <!--<a-tetrahedron src="#img-pyramid" color="#FF926B" radius="5" rotation="-35 0 45"></a-tetrahedron>-->
 
 
     <!-- Licht -->
