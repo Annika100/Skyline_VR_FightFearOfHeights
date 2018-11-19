@@ -185,6 +185,11 @@ AFRAME.registerComponent('raycaster-autorefresh', {
 
 
 
+        var sound = new Howl({
+            src: ['sounds/waves.mp3']
+        });
+
+        sound.play();
 
 
 
