@@ -9,9 +9,11 @@
 </head>
 <body>
 
-<!-- stats: Anzeige der Performance; vr-mode auf false aktiviert automatisch den VR Modus-->
-<a-scene raycaster-autorefresh auto-enter-vr>
+<!-- auto-enter-vr Component startet VR Modus automatisch-->
+<a-scene auto-enter-vr>
 
+    <!-- Asset Management System: enthaelt alle Assets wie DAEs, Bilder und Sounds.
+         Ziel: bessere Performanz, zwischenspeichern der Assets und Laden der Assets vor dem Rendern -->
     <a-assets>
         <a-asset-item id="hotairballoon_1" src="models/hotairballoon.dae"></a-asset-item>
         <a-asset-item id="hotairballoon_2" src="models/hotairballoon2.dae"></a-asset-item>
@@ -23,7 +25,6 @@
         <a-image id="img-fearsign" src="images/fearofheights.png"></a-image>
         <a-sky id="skybox" src="images/skybox.png"></a-sky>
     </a-assets>
-
 
     <!-- Kamera und Cursor -->
     <!-- cameraRig Entity zur Animation der Kamera Position -->
@@ -41,8 +42,7 @@
         </a-entity>
     </a-entity>
 
-
-    <!-- Laden der Skybox -->
+    <!-- Skybox mit Animation: Rotation (Bewegung der Wolken)-->
     <a-sky id="sky" src="#skybox" position="0 -765 0">
         <a-animation
                 attribute="rotation"
@@ -53,13 +53,10 @@
         </a-animation>
     </a-sky>
 
-
     <!-- Bilder -->
-
-    <!-- Fear of Heights Sign mit Cylinder -->
+    <!-- Fear of Heights Schild mit Cylinder -->
     <a-image id="fearsign" src="#img-fearsign" scale="2 2 1" position="4.75 1.3 -1.378" rotation="0 -80 8"></a-image>
     <a-cylinder height="3" radius="1.5" material="color:#ffffff" scale="0.05 1 0.05" position="4.87 -0.52 -1.39"></a-cylinder>
-
     <!-- Thumbnails mit Links und Ueberschrift für Szenenwechsel -->
     <!-- Thumbail 1 Balloonride -->
     <a-link id="loadscene1" href="balloonride.html" position="-1.3 1.2 -3" scale="0.8 0.8 1" visible="false"></a-link>
@@ -71,19 +68,17 @@
     <a-image id="thumbnail2" src="#img-thumbnail2" position="1.3 1.2 -3.15" scale="1.8 1.8 1"></a-image>
     <a-text id="thumbnail-text2" value="Slackline" position="0.914 2.343 -3" scale="0.8 0.8 0.8" color="darkblue" opacity="0.7"></a-text>
     <a-text id="thumbnail-text22" value="Advanced" position="0.872 2.131 -3" scale="0.8 0.8 0.8" color="red" opacity="0.7"></a-text>
-
     <!-- Sonne -->
     <a-image id="sunshine" src="#img-sun" position="7.2 42.8 -20.68" rotation="40 0 0" scale="15 15 1"></a-image>
 
-    <!-- Skyline - Face Your Fear Header -->
+    <!-- Skyline - Face Your Fear Ueberschrift -->
     <a-text id="header" value="Skyline - Face Your Fear" position="-1.44 3.1 -3" scale="1.3 1.3 1.3" color="darkblue" opacity="0.7"></a-text>
 
-
-    <!-- Laden des 1. Heißluftballons -->
+    <!-- Collada Modelle -->
+    <!-- 1. Heißluftballon -->
     <a-entity id="hotairballoon1" collada-model="#hotairballoon_1" rotation="0 130 0" position="9.25 -2.41 6.36" scale="0.5 0.5 0.5">
     </a-entity>
-
-    <!-- Laden des 2.. Heißluftballons -->
+    <!-- 2. Heißluftballon mit Animation: Hißluftballonfahrt -->
     <a-entity id="hotairballoon2" collada-model="#hotairballoon_2"  shadow="cast: true" rotation="0 110 0" position="27.5 11.5 -30" scale="0.1 0.1 0.1">
         <a-animation
                 id="balloon-flight"
@@ -92,20 +87,15 @@
                 dur="120000"
                 easing="linear"></a-animation>
     </a-entity>
-
-
     <!-- Insel -->
     <a-entity id="palmisland" collada-model="#island"  shadow="receive: true" rotation="0 0 0" position="0.5 -4.8 -1" scale="10 10 10">
     </a-entity>
 
-
-    <!-- Licht -->
+    <!-- Lichter vom Typ directional und point -->
     <a-entity light="type: directional; color:#EEE;intensity:2.0; castShadow: true" position="0.436 11.893 13.66" rotation=""></a-entity>
     <a-entity light="type: directional; color:#d56817" position="0.436 11.893 13.66" rotation=""></a-entity>
-
     <a-entity light="type: directional; color:#EEE" position="0.436 0.0825 -42.664" rotation=""></a-entity>
     <a-entity light="type: directional; color:#d56817" position="0.436 11.893 13.66" rotation=""></a-entity>
-
 
 </a-scene>
 
