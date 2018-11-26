@@ -9,9 +9,11 @@
 </head>
 <body>
 
-<!-- stats: Anzeige der Performance; vr-mode auf false aktiviert automatisch den VR Modus-->
-<a-scene raycaster-autorefresh auto-enter-vr>
+<!-- auto-enter-vr Component startet VR Modus automatisch-->
+<a-scene auto-enter-vr>
 
+    <!-- Asset Management System: enthaelt alle Assets wie DAEs, Bilder und Sounds.
+         Ziel: bessere Performanz, zwischenspeichern der Assets und Laden der Assets vor dem Rendern -->
     <a-assets>
         <a-asset-item id="hotairballoon_1" src="models/hotairballoon.dae"></a-asset-item>
         <a-asset-item id="hotairballoon_2" src="models/hotairballoon2.dae"></a-asset-item>
@@ -22,7 +24,6 @@
         <a-image id="img-sun" src="images/sun.png"></a-image>
         <a-sky id="skybox" src="images/skybox.png"></a-sky>
     </a-assets>
-
 
     <!-- Kamera und Cursor -->
     <!-- cameraRig Entity zur Animation der Kamera Position -->
@@ -40,8 +41,7 @@
         </a-entity>
     </a-entity>
 
-
-    <!-- Laden der Skybox -->
+    <!-- Skybox mit Animation: Rotation (Bewegung der Wolken)-->
     <a-sky id="sky" src="#skybox" position="0 -1000 0">
         <a-animation
                 attribute="rotation"
@@ -52,17 +52,13 @@
         </a-animation>
     </a-sky>
 
-
     <!-- Bilder -->
-
-    <!-- Start Bild -->
+    <!-- Start Bild mit Components: Animation nach Klick -> Verschwinden des Start Bildes, Start der Heißluftballonfahrt und Auftauchen des Home Bildes nach 150000 ms-->
     <a-image id="start" src="#img-start" scale="0.5 0.5 0.5" position="0 0.9 -1.3"
              visible-changer
-             balloon-flight
              event-animate="target:#balloon-flight; target2:#loadscene-button; target3:#loadscene-img; aevent:startexperience">
     </a-image>
-
-    <!-- Home Bild mit Szenenwechsel-->
+    <!-- Home Bild mit Szenenwechsel zurueck zum Menue-->
     <a-link id="loadscene" href="index.html" position="0 0.68 -1.4" scale="0 0 0" visible="false">
         <a-animation
                 begin="startexperience"
@@ -81,17 +77,16 @@
                 delay="150000">
         </a-animation>
     </a-image>
-
     <!-- Sonne -->
     <a-image id="sunshine" src="#img-sun" position="-52.486 157.879 -115.223" rotation="40 0 0" scale="50 50 1"></a-image>
-
-    <!-- Laden des 1. Heißluftballons -->
-    <a-entity id="hotairballoon1" collada-model="#hotairballoon_1"  shadow="cast: true" rotation="0 90 0" position="0 0.087 0" scale="0.1 0.1 0.1"></a-entity>
-    <a-entity id="ballooninner1" geometry="primitive:circle" scale="0.33 0.33 0.33" position="0 1.166 0" material="color:black" rotation="90 0 0"></a-entity>
-    <!-- Feuer Hot Air Balloon 1 -->
+    <!-- Feuer im Heißluftballoon-->
     <a-image id="fire1" src="#img-fire" scale="0.5 0.5 0.5" position="0 1.155 0" rotation="90 0 0"></a-image>
 
-    <!-- Laden des 2. Heißluftballons mit Animation-->
+    <!-- Collada Modelle -->
+    <!-- 1. Heißluftballon-->
+    <a-entity id="hotairballoon1" collada-model="#hotairballoon_1"  shadow="cast: true" rotation="0 90 0" position="0 0.087 0" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity id="ballooninner1" geometry="primitive:circle" scale="0.33 0.33 0.33" position="0 1.166 0" material="color:black" rotation="90 0 0"></a-entity>
+    <!-- 2. Heißluftballon mit Animation: Heißluftabllonfahrt-->
     <a-entity id="hotairballoon2" collada-model="#hotairballoon_2" shadow="cast: true" rotation="0 90 0" position="30.6 9.5 -57" scale="0.1 0.1 0.1">
         <a-animation
                 id="balloon2-flight"
@@ -100,10 +95,8 @@
                 dur="150000"
                 easing="linear"></a-animation>
     </a-entity>
-
-
-    <!-- Pyramiden Landschaft mit Animation-->
-    <a-entity id="pyramid" collada-model="#pyramid" shadow="receive: true" rotation="0 -270 0" position="-2.25 -0.3 -9.7" scale="2 2 2">
+    <!-- Pyramiden Landschaft mit Animation: Positionswechsel als Heißluftballonfahrt-->
+    <a-entity id="pyramide" collada-model="#pyramid" shadow="receive: true" rotation="0 -270 0" position="-2.25 -0.3 -9.7" scale="2 2 2">
         <a-animation
                 begin="startexperience"
                 id="balloon-flight"
@@ -114,17 +107,14 @@
         </a-animation>
     </a-entity>
 
-
-    <!-- Licht -->
+    <!-- Lichter vom Typ directional und point -->
     <a-entity light="type: directional; color:#EEE;intensity:0.7; castShadow: true" position="-3.38 11.893 1.38" rotation=""></a-entity>
     <a-entity light="type: directional; color:#EEE;intensity:0.3" position="2.9 11.893 1.38" rotation=""></a-entity>
     <a-entity light="type: directional; color:#EEE;intensity:0.3" position="-0.26 11.89 -3.23" rotation=""></a-entity>
     <a-entity light="type: point; color:#EEE;intensity:0.3" position="-1.1 12.1 -24" rotation=""></a-entity>
     <a-entity light="type: point;color:#EEE;intensity:0.6" position="0.427 -0.847 0.117"></a-entity>
 
-
 </a-scene>
-
 
 </body>
 </html>
