@@ -17,79 +17,35 @@
     <a-assets>
         <a-asset-item id="hotairballoon_1" src="models/hotairballoon.dae"></a-asset-item>
         <a-asset-item id="hotairballoon_2" src="models/hotairballoon2.dae"></a-asset-item>
-        <a-asset-item id="cliff" src="models/cliff.dae"></a-asset-item>
-        <a-image id="img-start" src="images/start.png"></a-image>
-        <a-image id="img-youdidit" src="images/youdidit.png"></a-image>
+        <a-asset-item id="pyramid" src="models/pyramid.dae"></a-asset-item>
+        <a-image id="img-start1" src="images/start_height_level1.png"></a-image>
+        <a-image id="img-start2" src="images/start_height_level2.png"></a-image>
+        <a-image id="img-start3" src="images/start_height_level3.png"></a-image>
+        <a-image id="img-start4" src="images/start_height_level4.png"></a-image>
         <a-image id="img-home" src="images/home.png"></a-image>
         <a-image id="img-fire" src="images/fire.png"></a-image>
-        <a-image id="img-water" src="images/water.png"></a-image>
         <a-image id="img-sun" src="images/sun.png"></a-image>
         <a-sky id="skybox" src="images/skybox.png"></a-sky>
     </a-assets>
 
     <!-- Kamera und Cursor -->
     <!-- cameraRig Entity zur Animation der Kamera Position -->
-    <a-entity id="cameraRig" position ="0 0.56 0">
+    <a-entity id="cameraRig" position ="0 0.56 -0.2">
         <a-entity id="camera"
                   camera look-controls wasd-controls>
-            <!-- Cursor: fuse-based (triggert Click wenn Nutzer auf ein Entity schaut, wartet 500 Millisekunden; Zoom bei Interaktion mit Objekt-->
-            <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1"
+            <!-- Cursor: fuse-based (triggert Click wenn Nutzer auf ein Entity schaut, wartet 800 Millisekunden; Zoom bei Interaktion mit Objekt-->
+            <a-entity cursor="fuse: true; fuseTimeout: 800" position="0 0 -1"
                       material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03">
-                <a-animation begin="click" easing="ease-in" attribute="scale" dur="150"
+                <a-animation begin="click" easing="ease-in" attribute="scale" dur="800"
                              fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
-                <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500"
+                <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="800"
                              fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
-                <!-- Score: zaehl nach Klick/ Look auf Ring +1 -->
-                <a-text id="scoredisplay" position="0.06 0.6 0" scale="0.6 0.6 0.6" value="Score: 0" color="darkblue" opacity="0.7"></a-text>
             </a-entity>
         </a-entity>
-        <!-- Animation der Kamera: Gehen ueber die Slackline -->
-        <a-animation
-                begin="ring1"
-                id="camera-move1"
-                attribute="position"
-                to="0 0.56 -1.2"
-                dur="8000">
-        </a-animation>
-        <a-animation
-                begin="ring2"
-                id="camera-move2"
-                attribute="position"
-                to="0 0.56 -2.26"
-                dur="8000">
-        </a-animation>
-        <a-animation
-                begin="ring3"
-                id="camera-move3"
-                attribute="position"
-                to="0 0.56 -3.32"
-                dur="8000">
-        </a-animation>
-        <a-animation
-                begin="ring4"
-                id="camera-move4"
-                attribute="position"
-                to="0 0.56 -4.38"
-                dur="8000">
-        </a-animation>
-        <a-animation
-                begin="ring5"
-                id="camera-move5"
-                attribute="position"
-                to="0 0.56 -5.44"
-                dur="8000">
-        </a-animation>
-        <a-animation
-                begin="balloon"
-                id="camera-move6"
-                attribute="position"
-                to="0 0.56 -6.85"
-                dur="8000">
-        </a-animation>
     </a-entity>
 
     <!-- Skybox mit Animation: Rotation (Bewegung der Wolken)-->
-    <a-sky id="sky" src="#skybox" position="0 -30 0">
+    <a-sky id="sky" src="#skybox" position="0 -1000 0">
         <a-animation
                 attribute="rotation"
                 from="0 0 0"
@@ -100,155 +56,131 @@
     </a-sky>
 
     <!-- Bilder -->
-    <!-- Start Bild mit Components: Animation nach Klick/ Look -> Start Bild verschwindet, Heißluftballonfahrt beginnt und erster Kreis auf Slackline erscheint-->
-    <a-image id="start" src="#img-start" scale="0.4 0.4 0.4" position="0 0.2 -1.3"
+    <!-- Start Height Level 1 Bild mit Components: Animation nach Klick/Look -> Verschwinden des Start1 Bildes, Start der Heißluftballonfahrt und Auftauchen des Start2 Bildes-->
+    <a-image id="start1" src="#img-start1" scale="0.65 0.65 0.65" position="0 0.9 -1.3"
              visible-changer
-             event-animation="target:#ring1-vis1; target2:#balloon-flight; aevent:startexperience">
-        <!--sound="src: url(sounds/waves.mp3); on: click"-->
-        <!-- Animation: bei Klick auf Bild: Bild verschwindet und Ring1 erscheint-->
+             event-animation="target:#balloon-flight1; target2:#scale-img2; aevent:heightlevel1">
     </a-image>
-    <!-- You Did It Bild mit Components: Animation nach Klick/ Look -> Bild verschwindet, Kamera bewegt sich in den Heißluftballonkorb und Home Bild mit Szenenwechsel erscheint-->
-    <a-image id="youdidit" src="#img-youdidit" scale="0 0 0" position="0 0.24 -6.59"
+    <!-- Start Height Level 2 Bild mit Components: Animation nach Klick/Look -> Verschwinden des Start2 Bildes, Start der Heißluftballonfahrt und Auftauchen des Start3 Bildes-->
+    <a-image id="start2" src="#img-start2" scale="0 0 0" position="0 0.9 -1.3"
              visible-changer
-             event-animation="target:#camera-move6; target2:#loadscene-button; target3:#loadscene-img; aevent:balloon">
+             event-animation="target:#balloon-flight2; target2:#scale-img3; aevent:heightlevel2">
         <a-animation
-                begin="ring5"
-                id="img2-vis1"
+                begin="heightlevel1"
+                id="scale-img2"
                 attribute="scale"
-                to="0.5 0.5 0.5"
-                dur="1000"
-                delay="4000"
-                repeat="0">
+                to="0.65 0.65 0.65"
+                dur="1400"
+                delay="22000">
         </a-animation>
     </a-image>
-    <!-- Home Bild mit Szenenwechsel-->
-    <a-link id="loadscene" href="index.html" position="0 0.4 -8.55" scale="0 0 0" visible="false">
+    <!-- Start Height Level 3 Bild mit Components: Animation nach Klick/Look -> Verschwinden des Start3 Bildes, Start der Heißluftballonfahrt und Auftauchen des Start3 Bildes-->
+    <a-image id="start3" src="#img-start3" scale="0 0 0" position="0 0.9 -1.3"
+             visible-changer
+             event-animation="target:#balloon-flight3; target2:#scale-img4; aevent:heightlevel3">
         <a-animation
-                begin="balloon"
+                begin="heightlevel2"
+                id="scale-img3"
+                attribute="scale"
+                to="0.65 0.65 0.65"
+                dur="1400"
+                delay="22000">
+        </a-animation>
+    </a-image>
+    <!-- Start Height Level 4 Bild mit Components: Animation nach Klick/Look -> Verschwinden des Start4 Bildes, Start der Heißluftballonfahrt und Auftauchen des Home und Szenenwechsel Bildes-->
+    <a-image id="start4" src="#img-start4" scale="0 0 0" position="0 0.9 -1.3"
+             visible-changer
+             event-animation="target:#balloon-flight4; target2:#loadscene-button; target3:#loadscene-img; aevent:heightlevel4">
+        <a-animation
+                begin="heightlevel3"
+                id="scale-img4"
+                attribute="scale"
+                to="0.65 0.65 0.65"
+                dur="1400"
+                delay="22000">
+        </a-animation>
+    </a-image>
+
+    <!-- Home Bild mit Szenenwechsel zurueck zum Menue-->
+    <a-link id="loadscene" href="index.html" position="0 0.8 -1.4" scale="0 0 0" visible="false">
+        <a-animation
+                begin="heightlevel4"
                 id="loadscene-button"
                 attribute="scale"
-                to="0.2 0.2 0.2"
-                delay="5000">
+                to="0.2 0.2 1"
+                delay="22000">
         </a-animation>
     </a-link>
-    <a-image id="home" src="#img-home" position="0 0.4 -8.6" scale="0 0 0">
+    <a-image id="home" src="#img-home" position="0 0.8 -1.43" scale="0 0 0">
         <a-animation
-                begin="balloon"
+                begin="heightlevel4"
                 id="loadscene-img"
                 attribute="scale"
                 to="0.6 0.6 1"
-                delay="5000">
+                delay="21500">
         </a-animation>
     </a-image>
     <!-- Sonne -->
     <a-image id="sunshine" src="#img-sun" position="-52.486 157.879 -115.223" rotation="40 0 0" scale="50 50 1"></a-image>
-    <!-- Feuer im 1. Heißluftballoon -->
-    <a-image id="fire1" src="#img-fire" scale="0.5 0.5 0.5" position="0 1.1 0" rotation="90 0 0"></a-image>
-    <!-- Feuer im 2. Heißluftballoon -->
-    <a-image id="fire2" src="#img-fire" scale="0.5 0.5 0.5" position="0 1.1 -7" rotation="90 0 0"></a-image>
-
-    <!-- Ringe auf Slackline zum ueberqueren bis zum anderen Heißluftballon -->
-    <!-- Ring 1 -->
-    <a-entity id="ring01" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.65; color: red" position="0 0.01 -1.2" rotation="90 0 0" scale="0 0 0"
-              score-counter
-              event-animation="target:#ring2-vis1; target2:#camera-move1; aevent:ring1">
-        <!-- Animation: beim Ansehen des Rings -> Ring verschwindet, Kamerafahrt auf diesen und Ring 2 erscheint nach 6 Sekunden -->
-        <a-animation
-                begin="startexperience"
-                id="ring1-vis1"
-                attribute="scale"
-                to="0.3 0.3 1"
-                dur="1400"
-                repeat="0">
-        </a-animation>
-    </a-entity>
-    <!-- Ring 2 -->
-    <a-entity id="ring02" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.65; color: red" position="0 0.01 -2.26" rotation="90 0 0" scale="0 0 0"
-              score-counter
-              event-animation="target:#ring3-vis1; target2:#camera-move2; aevent:ring2">
-        <!-- Animation: beim Ansehen des Rings -> Ring verschwindet, Kamerafahrt auf diesen und Ring 3 erscheint nach 6 Sekunden -->
-        <a-animation
-                begin="ring1"
-                id="ring2-vis1"
-                attribute="scale"
-                to="0.3 0.3 1"
-                dur="1400"
-                delay="6000">
-        </a-animation>
-    </a-entity>
-    <!-- Ring 3 -->
-    <a-entity id="ring03" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.65; color: red" position="0 0.01 -3.32" rotation="90 0 0" scale="0 0 0"
-              score-counter
-              event-animation="target:#ring4-vis1 ; target2:#camera-move3; aevent:ring3">
-        <!-- Animation: beim Ansehen des Rings -> Ring verschwindet, Kamerafahrt auf diesen und Ring 4 erscheint nach 6 Sekunden -->
-        <a-animation
-                begin="ring2"
-                id="ring3-vis1"
-                attribute="scale"
-                to="0.3 0.3 1"
-                dur="1400"
-                delay="6000">
-        </a-animation>
-    </a-entity>
-    <!-- Ring 4 -->
-    <a-entity id="ring04" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.65; color: red" position="0 0.01 -4.38" rotation="90 0 0" scale="0 0 0"
-              score-counter
-              event-animation="target:#ring5-vis1; target2:#camera-move4; aevent:ring4">
-        <!-- Animation: beim Ansehen des Rings -> Ring verschwindet, Kamerafahrt auf diesen und Ring 5 erscheint nach 6 Sekunden -->
-        <a-animation
-                begin="ring3"
-                id="ring4-vis1"
-                attribute="scale"
-                to="0.3 0.3 1"
-                dur="1400"
-                delay="6000">
-        </a-animation>
-    </a-entity>
-    <!-- Ring 5 -->
-    <a-entity id="ring05" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.65; color: red" position="0 0.01 -5.44" rotation="90 0 0" scale="0 0 0"
-              score-counter
-              event-animation="target:#camera-move5; target2:#img2-vis1; aevent:ring5">
-        <!-- Animation: beim Ansehen des Rings -> Ring verschwindet, Kamerafahrt auf diesen und you-did-it-Bild erscheint nach 4 Sekunden -->
-        <a-animation
-                begin="ring4"
-                id="ring5-vis1"
-                attribute="scale"
-                to="0.3 0.3 1"
-                dur="1400"
-                delay="6000">
-        </a-animation>
-    </a-entity>
+    <!-- Feuer im Heißluftballoon-->
+    <a-image id="fire1" src="#img-fire" scale="0.5 0.5 0.5" position="0 1.155 0" rotation="90 0 0"></a-image>
 
     <!-- Collada Modelle -->
-    <!-- 1. Heißluftballon -->
-    <a-entity id="hotairballoon1" collada-model="#hotairballoon_1"  shadow="cast: true" rotation="0 90 0" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
-    <a-entity id="ballooninner1" geometry="primitive:circle" scale="0.33 0.33 0.33" position="0 1.115 0" material="color:black" rotation="90 0 0"></a-entity>
-    <!-- 2. Heißluftballon -->
-    <a-entity id="hotairballoon2" collada-model="#hotairballoon_2" shadow="cast: true" rotation="0 90 0" position="0 0 -7" scale="0.1 0.1 0.1"></a-entity>
-    <a-entity id="ballooninner2" geometry="primitive:circle" scale="0.33 0.33 0.33" position="0 1.115 -7" material="color:black" rotation="90 0 0"></a-entity>
-    <!-- Klippe -->
-    <a-entity id="cliffs" collada-model="#cliff" shadow="receive: true" rotation="0 -270 0" position="0 -2.758 -5.336" scale="1 1 1">
+    <!-- 1. Heißluftballon-->
+    <a-entity id="hotairballoon1" collada-model="#hotairballoon_1"  shadow="cast: true" rotation="0 90 0" position="0 0.087 0" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity id="ballooninner1" geometry="primitive:circle" scale="0.33 0.33 0.33" position="0 1.166 0" material="color:black" rotation="90 0 0"></a-entity>
+    <!-- 2. Heißluftballon mit Animation: Heißluftabllonfahrt-->
+    <a-entity id="hotairballoon2" collada-model="#hotairballoon_2" shadow="cast: true" rotation="0 90 0" position="30.6 9.5 -57" scale="0.1 0.1 0.1">
         <a-animation
-                begin="startexperience"
-                id="balloon-flight"
+                id="balloon2-flight"
                 attribute="position"
-                to="0 -2.58 15.36"
+                to="-80 9.5 -43"
                 dur="150000"
                 easing="linear">
         </a-animation>
     </a-entity>
-
-    <!-- Slackline -->
-    <a-entity id="slackline" shadow="cast: true" geometry="primitive: plane; height: 10; width: 10" material="side: double" position="0 0 -3.5" rotation="90 0 0" scale="0.003 0.63 1"></a-entity>
-
-    <!-- Wasser -->
-    <a-plane src="#img-water" shadow="receive: true" scale="15 100 1" position="0 -3.6 0" rotation="-90 0 0" color="#5e5e5e"></a-plane>
+    <!-- Pyramiden Landschaft mit Animation: Positionswechsel in verschiedenen Hoehen als Heißluftballonfahrt-->
+    <a-entity id="pyramide" collada-model="#pyramid" shadow="receive: true" rotation="0 -270 0" position="-2.25 -0.3 -9.7" scale="2 2 2">
+        <a-animation
+                begin="heightlevel1"
+                id="balloon-flight1"
+                attribute="position"
+                to="-2.25 -0.7 0"
+                dur="22000"
+                easing="linear">
+        </a-animation>
+        <a-animation
+                begin="heightlevel2"
+                id="balloon-flight2"
+                attribute="position"
+                to="-2.25 -1.5 10"
+                dur="22000"
+                easing="linear">
+        </a-animation>
+        <a-animation
+                begin="heightlevel3"
+                id="balloon-flight3"
+                attribute="position"
+                to="-2.25 -2.5 20"
+                dur="22000"
+                easing="linear">
+        </a-animation>
+        <a-animation
+                begin="heightlevel4"
+                id="balloon-flight4"
+                attribute="position"
+                to="-2.25 -4 33"
+                dur="22000"
+                easing="linear">
+        </a-animation>
+    </a-entity>
 
     <!-- Lichter vom Typ directional und point -->
-    <a-entity light="type: directional; color:#EEE;intensity:0.4; castShadow: true" position="0.436 14.125 0" rotation=""></a-entity>
-    <a-entity light="type: point; color:#EEE;intensity:2.0" position="0 13.5 -3.7" rotation=""></a-entity>
-    <a-entity light="type: point; color:#EEE;intensity:1.0" position="0 13.5 -29.35" rotation=""></a-entity>
-    <a-entity light="type: point; color:#EEE;intensity:0.4" position="0 1.83 3.2" rotation=""></a-entity>
+    <a-entity light="type: directional; color:#EEE;intensity:0.7; castShadow: true" position="-3.38 11.893 1.38" rotation=""></a-entity>
+    <a-entity light="type: directional; color:#EEE;intensity:0.3" position="2.9 11.893 1.38" rotation=""></a-entity>
+    <a-entity light="type: directional; color:#EEE;intensity:0.3" position="-0.26 11.89 -3.23" rotation=""></a-entity>
+    <a-entity light="type: point; color:#EEE;intensity:0.3" position="-1.1 12.1 -24" rotation=""></a-entity>
+    <a-entity light="type: point;color:#EEE;intensity:0.6" position="0.427 -0.847 0.117"></a-entity>
 
 </a-scene>
 
