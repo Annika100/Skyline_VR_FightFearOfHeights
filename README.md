@@ -1,4 +1,4 @@
-# Skyline - Face You Fear
+# Skyline - Face Your Fear
 
 https://annika100.github.io/ 
 
