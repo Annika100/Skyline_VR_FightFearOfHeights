@@ -103,14 +103,14 @@
     <!-- Start Bild mit Components: Animation nach Klick/ Look -> Start Bild verschwindet, Heißluftballonfahrt beginnt und erster Kreis auf Slackline erscheint-->
     <a-image id="start" src="#img-start" scale="0.4 0.4 0.4" position="0 0.2 -1.3"
              visible-changer
-             event-animate="target:#ring1-vis1; target2:#balloon-flight; aevent:startexperience">
+             event-animation="target:#ring1-vis1; target2:#balloon-flight; aevent:startexperience">
         <!--sound="src: url(sounds/waves.mp3); on: click"-->
         <!-- Animation: bei Klick auf Bild: Bild verschwindet und Ring1 erscheint-->
     </a-image>
     <!-- You Did It Bild mit Components: Animation nach Klick/ Look -> Bild verschwindet, Kamera bewegt sich in den Heißluftballonkorb und Home Bild mit Szenenwechsel erscheint-->
     <a-image id="youdidit" src="#img-youdidit" scale="0 0 0" position="0 0.24 -6.59"
              visible-changer
-             event-animate="target:#camera-move6; target2:#loadscene-button; target3:#loadscene-img; aevent:balloon">
+             event-animation="target:#camera-move6; target2:#loadscene-button; target3:#loadscene-img; aevent:balloon">
         <a-animation
                 begin="ring5"
                 id="img2-vis1"
@@ -151,7 +151,7 @@
     <!-- Ring 1 -->
     <a-entity id="ring01" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.65; color: red" position="0 0.01 -1.2" rotation="90 0 0" scale="0 0 0"
               score-counter
-              event-animate="target:#ring2-vis1; target2:#camera-move1; aevent:ring1">
+              event-animation="target:#ring2-vis1; target2:#camera-move1; aevent:ring1">
         <!-- Animation: beim Ansehen des Rings -> Ring verschwindet, Kamerafahrt auf diesen und Ring 2 erscheint nach 6 Sekunden -->
         <a-animation
                 begin="startexperience"
@@ -165,7 +165,7 @@
     <!-- Ring 2 -->
     <a-entity id="ring02" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.65; color: red" position="0 0.01 -2.26" rotation="90 0 0" scale="0 0 0"
               score-counter
-              event-animate="target:#ring3-vis1; target2:#camera-move2; aevent:ring2">
+              event-animation="target:#ring3-vis1; target2:#camera-move2; aevent:ring2">
         <!-- Animation: beim Ansehen des Rings -> Ring verschwindet, Kamerafahrt auf diesen und Ring 3 erscheint nach 6 Sekunden -->
         <a-animation
                 begin="ring1"
@@ -179,7 +179,7 @@
     <!-- Ring 3 -->
     <a-entity id="ring03" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.65; color: red" position="0 0.01 -3.32" rotation="90 0 0" scale="0 0 0"
               score-counter
-              event-animate="target:#ring4-vis1 ; target2:#camera-move3; aevent:ring3">
+              event-animation="target:#ring4-vis1 ; target2:#camera-move3; aevent:ring3">
         <!-- Animation: beim Ansehen des Rings -> Ring verschwindet, Kamerafahrt auf diesen und Ring 4 erscheint nach 6 Sekunden -->
         <a-animation
                 begin="ring2"
@@ -193,7 +193,7 @@
     <!-- Ring 4 -->
     <a-entity id="ring04" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.65; color: red" position="0 0.01 -4.38" rotation="90 0 0" scale="0 0 0"
               score-counter
-              event-animate="target:#ring5-vis1; target2:#camera-move4; aevent:ring4">
+              event-animation="target:#ring5-vis1; target2:#camera-move4; aevent:ring4">
         <!-- Animation: beim Ansehen des Rings -> Ring verschwindet, Kamerafahrt auf diesen und Ring 5 erscheint nach 6 Sekunden -->
         <a-animation
                 begin="ring3"
@@ -207,7 +207,7 @@
     <!-- Ring 5 -->
     <a-entity id="ring05" geometry="primitive:circle; radius: 0.40" material="side:double; opacity: 0.65; color: red" position="0 0.01 -5.44" rotation="90 0 0" scale="0 0 0"
               score-counter
-              event-animate="target:#camera-move5; target2:#img2-vis1; aevent:ring5">
+              event-animation="target:#camera-move5; target2:#img2-vis1; aevent:ring5">
         <!-- Animation: beim Ansehen des Rings -> Ring verschwindet, Kamerafahrt auf diesen und you-did-it-Bild erscheint nach 4 Sekunden -->
         <a-animation
                 begin="ring4"
