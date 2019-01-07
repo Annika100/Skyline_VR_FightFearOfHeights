@@ -8,7 +8,7 @@ AFRAME.registerComponent('auto-enter-vr', {
 
 /* Sound
  Sound auf iOS zu spielen, egal in welchem Browser, benoetigt eine physische Benutzer Interaktion.
- Lösung: Audio Sprites mit Bibliothek Howler.js: https://github.com/goldfire/howler.js
+ Loesung: Audio Sprites mit Bibliothek Howler.js: https://github.com/goldfire/howler.js
  Note from: https://aframe.io/docs/0.8.0/components/sound.html */
 var sound = new Howl({
     src: ['sounds/wind.mp3'],
@@ -20,14 +20,14 @@ var sound = new Howl({
 sound.play();
 
 
-/* event-animate Component fuer Animationen auf Klick bzw Look
-*  ERGAENZEN!!!!!*/
-AFRAME.registerComponent('event-animate', { // A-Frame Component zur Animation auf 'click'
+/* event-animate Component 'event-animation': Animationen auf Klick bzw Look
+*  mehrere Targets um mehrere Animationen mit einem Klick bzw mit Look auszulösen*/
+AFRAME.registerComponent('event-animation', {
     schema: {
-        target: {type: 'selector'}, //mehrere Targets um mehrere Animationen mit einem 'click' auszulösen
+        target: {type: 'selector'},
         target2: {type: 'selector'},
         target3: {type: 'selector'},
-        aevent: {default: 'animation1'}, // verlinkung als 'begin' in einer Animation
+        aevent: {default: 'animation1'},
         triggeraction: {default: 'click' }
     },
 
@@ -44,7 +44,7 @@ AFRAME.registerComponent('event-animate', { // A-Frame Component zur Animation a
 });
 
 
-/* Component visible-changer entfernt Child Elemente */
+/* Component 'visible-changer' entfernt Child Elemente */
 AFRAME.registerComponent('visible-changer', {
     init: function () {
         var el = this.el;
@@ -55,7 +55,7 @@ AFRAME.registerComponent('visible-changer', {
 });
 
 
-/* Component score-counter laesst Elemente verschwinden und zaehlt anschließend den Score +1 */
+/* Component 'score-counter' entfernt Child Elemente und zaehlt anschließend den Score +1 */
 var score = 0;
 AFRAME.registerComponent('score-counter', {
     init: function () {
