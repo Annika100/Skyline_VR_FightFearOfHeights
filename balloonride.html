@@ -59,12 +59,12 @@
     <!-- Start Height Level 1 Bild mit Components: Animation nach Klick/Look -> Verschwinden des Start1 Bildes, Start der Heißluftballonfahrt und Auftauchen des Start2 Bildes-->
     <a-image id="start1" src="#img-start1" scale="0.65 0.65 0.65" position="0 0.9 -1.3"
              visible-changer
-             event-animate="target:#balloon-flight1; target2:#scale-img2; aevent:heightlevel1">
+             event-animation="target:#balloon-flight1; target2:#scale-img2; aevent:heightlevel1">
     </a-image>
     <!-- Start Height Level 2 Bild mit Components: Animation nach Klick/Look -> Verschwinden des Start2 Bildes, Start der Heißluftballonfahrt und Auftauchen des Start3 Bildes-->
     <a-image id="start2" src="#img-start2" scale="0 0 0" position="0 0.9 -1.3"
              visible-changer
-             event-animate="target:#balloon-flight2; target2:#scale-img3; aevent:heightlevel2">
+             event-animation="target:#balloon-flight2; target2:#scale-img3; aevent:heightlevel2">
         <a-animation
                 begin="heightlevel1"
                 id="scale-img2"
@@ -77,7 +77,7 @@
     <!-- Start Height Level 3 Bild mit Components: Animation nach Klick/Look -> Verschwinden des Start3 Bildes, Start der Heißluftballonfahrt und Auftauchen des Start3 Bildes-->
     <a-image id="start3" src="#img-start3" scale="0 0 0" position="0 0.9 -1.3"
              visible-changer
-             event-animate="target:#balloon-flight3; target2:#scale-img4; aevent:heightlevel3">
+             event-animation="target:#balloon-flight3; target2:#scale-img4; aevent:heightlevel3">
         <a-animation
                 begin="heightlevel2"
                 id="scale-img3"
@@ -90,7 +90,7 @@
     <!-- Start Height Level 4 Bild mit Components: Animation nach Klick/Look -> Verschwinden des Start4 Bildes, Start der Heißluftballonfahrt und Auftauchen des Home und Szenenwechsel Bildes-->
     <a-image id="start4" src="#img-start4" scale="0 0 0" position="0 0.9 -1.3"
              visible-changer
-             event-animate="target:#balloon-flight4; target2:#loadscene-button; target3:#loadscene-img; aevent:heightlevel4">
+             event-animation="target:#balloon-flight4; target2:#loadscene-button; target3:#loadscene-img; aevent:heightlevel4">
         <a-animation
                 begin="heightlevel3"
                 id="scale-img4"
