@@ -9,7 +9,8 @@ AFRAME.registerComponent('auto-enter-vr', {
 /* Sound
  Sound auf iOS zu spielen, egal in welchem Browser, benoetigt eine physische Benutzer Interaktion.
  Loesung: Audio Sprites mit Bibliothek Howler.js: https://github.com/goldfire/howler.js
- Note from: https://aframe.io/docs/0.8.0/components/sound.html */
+ Note from: https://aframe.io/docs/0.8.0/components/sound.html
+ Sound wird nach User Interaktion abgespielt*/
 var sound = new Howl({
     src: ['sounds/wind.mp3'],
     autoplay: true,
