@@ -18,7 +18,10 @@
         <a-asset-item id="hotairballoon_1" src="models/hotairballoon.dae"></a-asset-item>
         <a-asset-item id="hotairballoon_2" src="models/hotairballoon2.dae"></a-asset-item>
         <a-asset-item id="pyramid" src="models/pyramid.dae"></a-asset-item>
-        <a-image id="img-start" src="images/start.png"></a-image>
+        <a-image id="img-start1" src="images/start_height_level1.png"></a-image>
+        <a-image id="img-start2" src="images/start_height_level2.png"></a-image>
+        <a-image id="img-start3" src="images/start_height_level3.png"></a-image>
+        <a-image id="img-start4" src="images/start_height_level4.png"></a-image>
         <a-image id="img-home" src="images/home.png"></a-image>
         <a-image id="img-fire" src="images/fire.png"></a-image>
         <a-image id="img-sun" src="images/sun.png"></a-image>
@@ -35,7 +38,7 @@
                       material="color: black" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03">
                 <a-animation begin="click" easing="ease-in" attribute="scale" dur="800"
                              fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
-                <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="8000"
+                <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="800"
                              fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
             </a-entity>
         </a-entity>
@@ -53,28 +56,68 @@
     </a-sky>
 
     <!-- Bilder -->
-    <!-- Start Bild mit Components: Animation nach Klick -> Verschwinden des Start Bildes, Start der Heißluftballonfahrt und Auftauchen des Home Bildes nach 150000 ms-->
-    <a-image id="start" src="#img-start" scale="0.5 0.5 0.5" position="0 0.9 -1.3"
+    <!-- Start Height Level 1 Bild mit Components: Animation nach Klick/Look -> Verschwinden des Start1 Bildes, Start der Heißluftballonfahrt und Auftauchen des Start2 Bildes-->
+    <a-image id="start1" src="#img-start1" scale="0.65 0.65 0.65" position="0 0.9 -1.3"
              visible-changer
-             event-animate="target:#balloon-flight; target2:#loadscene-button; target3:#loadscene-img; aevent:startexperience">
+             event-animate="target:#balloon-flight1; target2:#scale-img2; aevent:heightlevel1">
     </a-image>
-    <!-- Home Bild mit Szenenwechsel zurueck zum Menue-->
-    <a-link id="loadscene" href="index.html" position="0 0.68 -1.4" scale="0 0 0" visible="false">
+    <!-- Start Height Level 2 Bild mit Components: Animation nach Klick/Look -> Verschwinden des Start2 Bildes, Start der Heißluftballonfahrt und Auftauchen des Start3 Bildes-->
+    <a-image id="start2" src="#img-start2" scale="0 0 0" position="0 0.9 -1.3"
+             visible-changer
+             event-animate="target:#balloon-flight2; target2:#scale-img3; aevent:heightlevel2">
         <a-animation
-                begin="startexperience"
+                begin="heightlevel1"
+                id="scale-img2"
+                attribute="scale"
+                to="0.65 0.65 0.65"
+                dur="1400"
+                delay="22000">
+        </a-animation>
+    </a-image>
+    <!-- Start Height Level 3 Bild mit Components: Animation nach Klick/Look -> Verschwinden des Start3 Bildes, Start der Heißluftballonfahrt und Auftauchen des Start3 Bildes-->
+    <a-image id="start3" src="#img-start3" scale="0 0 0" position="0 0.9 -1.3"
+             visible-changer
+             event-animate="target:#balloon-flight3; target2:#scale-img4; aevent:heightlevel3">
+        <a-animation
+                begin="heightlevel2"
+                id="scale-img3"
+                attribute="scale"
+                to="0.65 0.65 0.65"
+                dur="1400"
+                delay="22000">
+        </a-animation>
+    </a-image>
+    <!-- Start Height Level 4 Bild mit Components: Animation nach Klick/Look -> Verschwinden des Start4 Bildes, Start der Heißluftballonfahrt und Auftauchen des Home und Szenenwechsel Bildes-->
+    <a-image id="start4" src="#img-start4" scale="0 0 0" position="0 0.9 -1.3"
+             visible-changer
+             event-animate="target:#balloon-flight4; target2:#loadscene-button; target3:#loadscene-img; aevent:heightlevel4">
+        <a-animation
+                begin="heightlevel3"
+                id="scale-img4"
+                attribute="scale"
+                to="0.65 0.65 0.65"
+                dur="1400"
+                delay="22000">
+        </a-animation>
+    </a-image>
+
+    <!-- Home Bild mit Szenenwechsel zurueck zum Menue-->
+    <a-link id="loadscene" href="index.html" position="0 0.8 -1.4" scale="0 0 0" visible="false">
+        <a-animation
+                begin="heightlevel4"
                 id="loadscene-button"
                 attribute="scale"
                 to="0.2 0.2 1"
-                delay="150000">
+                delay="22000">
         </a-animation>
     </a-link>
-    <a-image id="home" src="#img-home" position="0 0.68 -1.43" scale="0 0 0">
+    <a-image id="home" src="#img-home" position="0 0.8 -1.43" scale="0 0 0">
         <a-animation
-                begin="startexperience"
+                begin="heightlevel4"
                 id="loadscene-img"
                 attribute="scale"
                 to="0.6 0.6 1"
-                delay="150000">
+                delay="21500">
         </a-animation>
     </a-image>
     <!-- Sonne -->
@@ -93,16 +136,41 @@
                 attribute="position"
                 to="-80 9.5 -43"
                 dur="150000"
-                easing="linear"></a-animation>
+                easing="linear">
+        </a-animation>
     </a-entity>
-    <!-- Pyramiden Landschaft mit Animation: Positionswechsel als Heißluftballonfahrt-->
+    <!-- Pyramiden Landschaft mit Animation: Positionswechsel in verschiedenen Hoehen als Heißluftballonfahrt-->
     <a-entity id="pyramide" collada-model="#pyramid" shadow="receive: true" rotation="0 -270 0" position="-2.25 -0.3 -9.7" scale="2 2 2">
         <a-animation
-                begin="startexperience"
-                id="balloon-flight"
+                begin="heightlevel1"
+                id="balloon-flight1"
+                attribute="position"
+                to="-2.25 -0.7 0"
+                dur="22000"
+                easing="linear">
+        </a-animation>
+        <a-animation
+                begin="heightlevel2"
+                id="balloon-flight2"
+                attribute="position"
+                to="-2.25 -1.5 10"
+                dur="22000"
+                easing="linear">
+        </a-animation>
+        <a-animation
+                begin="heightlevel3"
+                id="balloon-flight3"
+                attribute="position"
+                to="-2.25 -2.5 20"
+                dur="22000"
+                easing="linear">
+        </a-animation>
+        <a-animation
+                begin="heightlevel4"
+                id="balloon-flight4"
                 attribute="position"
                 to="-2.25 -4 33"
-                dur="150000"
+                dur="22000"
                 easing="linear">
         </a-animation>
     </a-entity>
